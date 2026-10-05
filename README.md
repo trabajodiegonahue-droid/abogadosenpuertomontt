@@ -18,3 +18,6 @@ sobre todo por WhatsApp y llamada. Por eso:
 3. **Foto del abogado**: opcional, en la sección "Quiénes somos" (`.about-visual`).
 4. **Etiqueta de Google Ads**: pegar el snippet `gtag` existente del sitio en el `<head>` y crear conversiones a partir de los eventos de arriba.
 5. Revisar los textos con el estudio, incluida la lista de comunas de cobertura.
+6. **Equipo**: confirmar nombres y cargos de E. Zapata y Roberto Calisto Villegas. Los obtuve de resultados de búsqueda, no del sitio.
+7. **Blog**: las tarjetas enlazan a los artículos que ya existen en el sitio actual. Si se migra, hay que mantener esas URLs.
+8. **SEO**: el sitio actual tiene páginas propias por servicio (`/portfolio-item/...`) que ya aparecen en Google. Antes de reemplazarlo hay que conservar esas URLs o crear redirecciones 301 hacia la nueva página para no perder posicionamiento.
