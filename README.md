@@ -30,6 +30,9 @@ python3 build/build.py
 - Íconos: `build/sprite.html`.
 
 ## Ver el sitio en local
+Haz doble clic en **`ver-sitio.command`** (Mac) o en **`ver-sitio.bat`** (Windows). Trae los últimos cambios, levanta el servidor y abre el navegador.
+
+También puedes hacerlo a mano:
 ```bash
 python3 -m http.server 8000
 ```
