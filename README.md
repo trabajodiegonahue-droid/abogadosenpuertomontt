@@ -1,7 +1,39 @@
 # Abogados en Puerto Montt — rediseño
 
 Propuesta de rediseño de https://www.abogadosenpuertomontt.cl (Estudio Calixto & Cía.).
-Página estática: `index.html` + `assets/`. Para verla, abre `index.html` en el navegador.
+
+## Estructura del sitio
+Es un sitio estático de varias páginas, sin dependencias:
+
+| URL | Contenido |
+|---|---|
+| `/` | Inicio: hero, servicios, cómo trabajamos y quiénes somos (resumen) |
+| `/servicios/` | Todos los servicios + preguntas frecuentes |
+| `/portfolio-item/<servicio>/` | Una página por servicio, con formulario lateral y FAQ |
+| `/quienes-somos/` | Estudio, credenciales, equipo y cobertura |
+| `/blog/` | Artículos del blog |
+| `/contacto/` | Datos, mapa y formulario completo |
+| `/ubicaciones/` | Redirige a `/contacto/` (URL del sitio antiguo) |
+| `/404.html` | Página no encontrada |
+
+Las páginas de servicio, `/servicios/`, `/quienes-somos/` y `/contacto/` usan **las mismas URLs del sitio actual** para conservar el posicionamiento en Google. También se generan `sitemap.xml` y `robots.txt`.
+
+## Cómo editar
+Las páginas HTML se **generan** con `build/build.py`. Los textos, servicios, equipo, blog y datos de contacto están al inicio de ese archivo. Después de editarlo, ejecuta:
+
+```bash
+python3 build/build.py
+```
+
+- Estilos: `assets/css/styles.css`. Los colores de marca están en `:root`.
+- Comportamiento: `assets/js/main.js` (WhatsApp, formularios, menú, animaciones, horario).
+- Íconos: `build/sprite.html`.
+
+## Ver el sitio en local
+```bash
+python3 -m http.server 8000
+```
+Luego abre http://localhost:8000. Usa el servidor y no abras los archivos con doble clic, porque los enlaces a carpetas como `servicios/` necesitan un servidor.
 
 ## Objetivo principal
 El sitio recibe tráfico de Google Ads, así que su meta es **convertir visitas en contactos para agendar una consulta**,
@@ -19,5 +51,6 @@ sobre todo por WhatsApp y llamada. Por eso:
 4. **Etiqueta de Google Ads**: pegar el snippet `gtag` existente del sitio en el `<head>` y crear conversiones a partir de los eventos de arriba.
 5. Revisar los textos con el estudio, incluida la lista de comunas de cobertura.
 6. **Equipo**: confirmar nombres y cargos de E. Zapata y Roberto Calisto Villegas. Los obtuve de resultados de búsqueda, no del sitio.
-7. **Blog**: las tarjetas enlazan a los artículos que ya existen en el sitio actual. Si se migra, hay que mantener esas URLs.
-8. **SEO**: el sitio actual tiene páginas propias por servicio (`/portfolio-item/...`) que ya aparecen en Google. Antes de reemplazarlo hay que conservar esas URLs o crear redirecciones 301 hacia la nueva página para no perder posicionamiento.
+7. **Blog**: las tarjetas enlazan a los artículos que ya existen en el sitio actual (WordPress). Si se reemplaza el WordPress, hay que migrar esos artículos o mantenerlos en sus mismas URLs.
+8. **SEO**: las URLs de servicios ya coinciden con las actuales. Las páginas de laboral (`abogados-laborales-puerto-montt`) y herencias (`posesion-efectiva-puerto-montt`) son nuevas. Revisa en Google Search Console si existen otras URLs antiguas que haya que redirigir.
+9. **Hosting**: el sitio funciona en cualquier hosting estático (Netlify, Vercel, GitHub Pages o el hosting actual). Hay que configurar `404.html` como página de error.
