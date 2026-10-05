@@ -24,6 +24,12 @@ EMAIL = "fcalixto.abogado@gmail.com"
 ADDRESS = "Antonio Varas 216, Of. 309, Piso 3, Torre del Puerto, Puerto Montt"
 HOURS = "Lunes a viernes · 09:00–13:00 y 15:00–18:30"
 FACEBOOK = "https://www.facebook.com/abogados.ptomontt"
+# Datos de confianza tomados del sitio y la ficha de Google del estudio (verificar antes de publicar)
+RATING = "4,9"
+REVIEWS = "433"
+YEARS = "15"
+GOOGLE_REVIEWS = "https://www.google.com/maps/search/?api=1&amp;query=Abogados%20en%20Puerto%20Montt%20Calixto%20%26%20C%C3%ADa"
+SISTER_SITES = ["abogadosdepuertomontt.cl", "abogadosdepuertovaras.cl", "abogadoscalbuco.cl", "abogadoslosmuermos.cl", "defensaspuertomontt.cl"]
 
 # ---------------------------------------------------------------------------
 # Servicios
@@ -53,6 +59,32 @@ SERVICES = [
             ("¿Cuánto tiempo de separación se necesita para divorciarse?", "Para el divorcio de mutuo acuerdo se exige, por regla general, al menos un año de cese de la convivencia; para el divorcio unilateral, al menos tres años. El divorcio por culpa no exige un plazo de separación."),
             ("¿Qué pasa si no me pagan la pensión de alimentos?", "Existen mecanismos de cobro como la liquidación de la deuda, la retención de remuneraciones, la inscripción en el Registro Nacional de Deudores de Pensiones de Alimentos y otras medidas de apremio. Te ayudamos a activarlos."),
             ("¿Puedo pedir medidas de protección con urgencia?", "Sí. Ante situaciones de violencia o riesgo, el tribunal puede decretar medidas cautelares de forma rápida. Escríbenos de inmediato para orientarte."),
+        ],
+    },
+    {
+        "slug": "abogados-de-divorcios-en-puerto-montt",
+        "name": "Divorcios",
+        "title": "Abogados de Divorcio en Puerto Montt",
+        "card": "Divorcios",
+        "area": "Divorcio",
+        "icon": "i-rings",
+        "sub": "Mutuo acuerdo, unilateral, por culpa",
+        "short": "Divorcios de mutuo acuerdo, unilaterales y por culpa, compensación económica y liquidación de la sociedad conyugal.",
+        "lead": "Tramitamos divorcios en Puerto Montt, Puerto Varas y comunas cercanas, con asesoría clara sobre plazos, bienes e hijos.",
+        "intro": "Un divorcio implica decisiones importantes sobre los hijos, los bienes y el futuro de cada uno. Te explicamos qué tipo de divorcio corresponde a tu caso, buscamos acuerdos cuando es posible y te representamos ante el Tribunal de Familia.",
+        "items": [
+            ("Divorcio de mutuo acuerdo", "Cuando ambos están de acuerdo y hay al menos un año de cese de convivencia."),
+            ("Divorcio unilateral", "Por cese de convivencia de al menos tres años."),
+            ("Divorcio por culpa", "Por faltas graves a los deberes del matrimonio."),
+            ("Compensación económica", "Para el cónyuge que se dedicó al cuidado de los hijos o del hogar."),
+            ("Separación judicial", "Cuando no se busca terminar el matrimonio."),
+            ("Separación de bienes", "Y liquidación de la sociedad conyugal."),
+        ],
+        "callout": "En el divorcio de mutuo acuerdo se presenta un acuerdo completo y suficiente que regula alimentos, cuidado personal y relación directa y regular de los hijos, además de las relaciones patrimoniales. Te ayudamos a redactarlo.",
+        "faqs": [
+            ("¿Cuánto demora un divorcio?", "Depende del tipo de divorcio y de si hay acuerdo. El de mutuo acuerdo suele ser el más rápido. En la primera consulta te damos una estimación para tu caso."),
+            ("¿Cómo acredito el cese de la convivencia?", "Se puede acreditar con distintos medios, como un acuerdo de cese por escritura pública o acta, la demanda de separación, testigos u otros antecedentes. Revisamos cuáles tienes."),
+            ("¿Qué pasa con los bienes al divorciarse?", "Depende del régimen matrimonial. Si están casados en sociedad conyugal, se debe liquidar. Te asesoramos en ese proceso."),
         ],
     },
     {
@@ -108,7 +140,32 @@ SERVICES = [
         ],
     },
     {
-        "slug": "abogados-laborales-puerto-montt",
+        "slug": "asesoria-bienes-raices-puerto-montt",
+        "name": "Inmobiliario",
+        "title": "Abogados Inmobiliarios en Puerto Montt",
+        "card": "Bienes Raíces",
+        "area": "Bienes raíces",
+        "icon": "i-key",
+        "sub": "Estudio de títulos, compraventas, subdivisiones",
+        "short": "Estudio de títulos, compraventas, arriendos y subdivisiones de propiedades urbanas y rurales.",
+        "lead": "Asesoría legal inmobiliaria en Puerto Montt, Puerto Varas, Los Muermos, Calbuco y Maullín para comprar, vender o regularizar tu propiedad con seguridad.",
+        "intro": "Comprar o vender una propiedad es una de las decisiones económicas más importantes. Revisamos los títulos, detectamos riesgos y redactamos los contratos para que la operación sea segura.",
+        "items": [
+            ("Estudio de títulos", "De propiedades urbanas y rurales antes de comprar o hipotecar."),
+            ("Compraventas", "Redacción de promesas y escrituras de compraventa."),
+            ("Arriendos", "Contratos habitacionales y comerciales."),
+            ("Subdivisiones", "De predios rurales y urbanos."),
+            ("Regularización", "De títulos y propiedades con problemas de inscripción."),
+            ("Asesoría a inversionistas", "Para compras de parcelas, locales y propiedades en el sur."),
+        ],
+        "callout": "Antes de pagar un pie o firmar una promesa, pide un estudio de títulos: revisa la historia del dominio y la existencia de hipotecas, embargos, prohibiciones o litigios sobre la propiedad.",
+        "faqs": [
+            ("¿Qué es un estudio de títulos?", "Es la revisión legal de los antecedentes de una propiedad, normalmente de al menos los últimos diez años, para confirmar que el vendedor es dueño y que no hay gravámenes, prohibiciones ni litigios que afecten la compra."),
+            ("¿Pueden ayudarme a comprar una parcela?", "Sí. Revisamos los títulos, la subdivisión y los permisos, y redactamos la promesa y la compraventa."),
+        ],
+    },
+    {
+        "slug": "defensas-laborales",
         "name": "Laboral",
         "title": "Abogados Laborales en Puerto Montt",
         "card": "Derecho Laboral",
@@ -122,7 +179,7 @@ SERVICES = [
             ("Despido injustificado", "Cobro de indemnizaciones y recargos legales."),
             ("Nulidad del despido", "Cuando el empleador no pagó las cotizaciones."),
             ("Autodespido", "Despido indirecto por incumplimientos graves del empleador."),
-            ("Accidentes del trabajo", "Indemnizaciones por accidentes y enfermedades profesionales."),
+            ("Accidentes del trabajo", "Indemnizaciones por accidentes del trabajo y enfermedades profesionales."),
             ("Tutela de derechos", "Vulneración de derechos fundamentales en el trabajo."),
             ("Asesoría a empleadores", "Contratos, reglamentos internos, despidos y finiquitos."),
         ],
@@ -265,13 +322,19 @@ SEO = {
     "abogados-de-familia-puerto-montt": ("Abogados de Familia en Puerto Montt",
         "Abogados de familia en Puerto Montt: pensión de alimentos, divorcio, cuidado personal y VIF. Atención presencial u online. Agenda por WhatsApp.",
         "¿Por qué contar con un abogado de familia?", "Casos de familia que atendemos", "derecho de familia"),
+    "abogados-de-divorcios-en-puerto-montt": ("Abogados de Divorcio en Puerto Montt",
+        "Abogados de divorcio en Puerto Montt: mutuo acuerdo, unilateral y por culpa, compensación económica y liquidación de bienes. Agenda por WhatsApp.",
+        "¿Por qué contar con un abogado de divorcio?", "Tipos de divorcio y trámites que atendemos", "divorcios"),
+    "asesoria-bienes-raices-puerto-montt": ("Abogados Inmobiliarios en Puerto Montt",
+        "Abogados inmobiliarios en Puerto Montt: estudio de títulos, compraventas, arriendos y subdivisiones de propiedades urbanas y rurales.",
+        "¿Por qué asesorarte con un abogado inmobiliario?", "Servicios inmobiliarios que realizamos", "bienes raíces"),
     "abogados-penalistas-puerto-montt": ("Abogados Penalistas en Puerto Montt",
         "Abogados penalistas en Puerto Montt: control de detención, formalización, juicio oral y querellas. Defensa urgente al +56 9 9797 9827.",
         "¿Por qué contar con un abogado penalista?", "Casos penales que atendemos", "defensa penal"),
     "abogados-civiles-puerto-montt": ("Abogados Civiles en Puerto Montt",
         "Abogados civiles en Puerto Montt: juicios de tierras, precario, desalojos, arriendos, cobranzas e indemnizaciones. Agenda tu consulta por WhatsApp.",
         "¿Por qué contar con un abogado civil?", "Juicios civiles que atendemos", "juicios civiles"),
-    "abogados-laborales-puerto-montt": ("Abogados Laborales en Puerto Montt",
+    "defensas-laborales": ("Abogados Laborales en Puerto Montt",
         "Abogados laborales en Puerto Montt: despido injustificado, nulidad del despido y accidentes del trabajo. Consulta antes de que venza el plazo.",
         "¿Por qué contar con un abogado laboral?", "Casos laborales que atendemos", "derecho laboral"),
     "posesion-efectiva-puerto-montt": ("Posesión Efectiva y Herencias Puerto Montt",
@@ -394,7 +457,10 @@ GENERAL_FAQS = [
 # ---------------------------------------------------------------------------
 # Piezas comunes
 # ---------------------------------------------------------------------------
-EXTRA_ICONS = """    <symbol id="i-chev" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></symbol>
+EXTRA_ICONS = """    <symbol id="i-rings" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="14" r="6"/><circle cx="15" cy="10" r="6"/></g></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 9.8-9.8M17 6l3 3M14.5 8.5l2 2"/></g></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></symbol>
     <symbol id="i-info" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></g></symbol>
 """
 
@@ -455,8 +521,8 @@ def scene(sea_color):
 
 def area_options(selected=None):
     opts = ['<option value="">Selecciona…</option>']
-    for label in ["Familia", "Penal", "Civil", "Laboral", "Herencias / Posesión efectiva", "Policía Local",
-                  "Sociedades y empresas", "Contratos y escrituras", "Consulta online", "Otra / No estoy seguro"]:
+    for label in ["Familia", "Divorcio", "Penal", "Civil", "Bienes raíces", "Laboral", "Herencias / Posesión efectiva",
+                  "Policía Local", "Sociedades y empresas", "Contratos y escrituras", "Consulta online", "Otra / No estoy seguro"]:
         sel = " selected" if label == selected else ""
         opts.append(f"<option{sel}>{escape(label)}</option>")
     return "".join(opts)
@@ -591,6 +657,7 @@ def layout(path, title, description, active, body, p, extra_head="", noindex=Fal
                 f'<span><strong>{escape(s["card"])}</strong><small>{escape(s["sub"])}</small></span></a>')
     sub = "\n".join(sub_link(s) for s in SERVICES)
     serv_active = active == "servicios" or active in SERVICE_BY_SLUG
+    sites = "\n".join(f'            <li><a href="https://www.{d}" target="_blank" rel="noopener">{d}</a></li>' for d in SISTER_SITES)
     footer_services = "\n".join(
         f'            <li><a href="{p}portfolio-item/{s["slug"]}/">{escape(s["card"])}</a></li>' for s in SERVICES)
 
@@ -721,6 +788,10 @@ def layout(path, title, description, active, body, p, extra_head="", noindex=Fal
             <li>Lun a Vie · 09:00–13:00 y 15:00–18:30</li>
             <li><a href="{FACEBOOK}" target="_blank" rel="noopener">Facebook</a></li>
           </ul>
+          <p class="foot-title" style="margin-top:1.4rem">Nuestros sitios</p>
+          <ul class="sites">
+{sites}
+          </ul>
         </div>
       </div>
       <div class="copy">
@@ -786,9 +857,9 @@ def build_home():
             <a class="btn btn-ghost js-call" data-track="hero" href="tel:{PHONE_TEL}"><svg><use href="#i-phone"/></svg> {PHONE}</a>
           </div>
           <ul class="trust">
-            <li><svg><use href="#i-check"/></svg> Colegio de Abogados</li>
-            <li><svg><use href="#i-check"/></svg> Presencial u online</li>
-            <li><svg><use href="#i-check"/></svg> Confidencial</li>
+            <li><a class="rating" href="{GOOGLE_REVIEWS}" target="_blank" rel="noopener"><span class="stars" aria-hidden="true">★★★★★</span> <b>{RATING}</b> en Google · {REVIEWS} reseñas</a></li>
+            <li><svg><use href="#i-check"/></svg> +{YEARS} años de experiencia</li>
+            <li><svg><use href="#i-check"/></svg> Facilidades de pago</li>
           </ul>
         </div>
 
@@ -808,10 +879,10 @@ def build_home():
 
     <section class="strip" aria-label="Por qué elegirnos">
       <div class="container">
-        <div class="strip-item reveal"><div class="ic"><svg><use href="#i-award"/></svg></div><div><strong>Magíster en Derecho</strong><span>Formación UACh, UC y USS</span></div></div>
-        <div class="strip-item reveal" style="--d:.1s"><div class="ic"><svg><use href="#i-pin"/></svg></div><div><strong>Torre del Puerto</strong><span>Oficina en el centro de Puerto Montt</span></div></div>
-        <div class="strip-item reveal" style="--d:.2s"><div class="ic"><svg><use href="#i-video"/></svg></div><div><strong>Consultas online</strong><span>Por videollamada, desde todo Chile</span></div></div>
-        <div class="strip-item reveal" style="--d:.3s"><div class="ic"><svg><use href="#i-scale"/></svg></div><div><strong>Todas las instancias</strong><span>Juzgados, tribunales y Cortes</span></div></div>
+        <div class="strip-item reveal"><div class="ic"><svg><use href="#i-star"/></svg></div><div><strong>{RATING} ★ en Google</strong><span>{REVIEWS} reseñas de clientes</span></div></div>
+        <div class="strip-item reveal" style="--d:.1s"><div class="ic"><svg><use href="#i-award"/></svg></div><div><strong>+{YEARS} años de experiencia</strong><span>Magíster en Derecho (UACh)</span></div></div>
+        <div class="strip-item reveal" style="--d:.2s"><div class="ic"><svg><use href="#i-brief"/></svg></div><div><strong>Honorarios razonables</strong><span>Con facilidades de pago</span></div></div>
+        <div class="strip-item reveal" style="--d:.3s"><div class="ic"><svg><use href="#i-video"/></svg></div><div><strong>Presencial u online</strong><span>Torre del Puerto o videollamada</span></div></div>
       </div>
     </section>
 
@@ -1020,7 +1091,8 @@ def build_about():
           <div class="reveal right">
             <div class="eyebrow">Nuestro estudio</div>
             <h2>Servicios legales serios, personalizados y confidenciales</h2>
-            <p class="lead">Prestamos servicios y asesorías legales permanentes y ocasionales en Puerto Montt, Puerto Varas y toda la Provincia de Llanquihue.</p>
+            <p class="lead">Con más de {YEARS} años de experiencia, prestamos servicios y asesorías legales permanentes y ocasionales en Puerto Montt, Puerto Varas y toda la Provincia de Llanquihue.</p>
+            <p>Mantenemos una tarifa de honorarios razonable y otorgamos facilidades de pago, aprovechando la tramitación electrónica y los procedimientos orales para reducir costos sin bajar la calidad.</p>
             <p>El estudio fue fundado por <strong>Fernando Calixto Marín</strong>, abogado dedicado a la asesoría legal y defensa judicial de personas, familias, negocios y empresas de Puerto Montt y la X Región.</p>
             <ul class="creds">
               <li><svg><use href="#i-check"/></svg> Licenciado en Ciencias Jurídicas y Magíster en Derecho Privado (UACh).</li>
@@ -1046,7 +1118,7 @@ def build_about():
         <div class="why-grid">
           <div class="why-item reveal" style="background:#fff"><div class="num">01</div><h3>Trato directo con tu abogado</h3><p>Hablas con quien lleva tu caso. Te explicamos cada etapa en lenguaje simple.</p></div>
           <div class="why-item reveal" style="--d:.1s;background:#fff"><div class="num">02</div><h3>Equipo multidisciplinario</h3><p>Abogados y apoyo contable para abordar tu caso de forma integral.</p></div>
-          <div class="why-item reveal" style="--d:.2s;background:#fff"><div class="num">03</div><h3>Presencial u online</h3><p>En nuestra oficina de Torre del Puerto o por videollamada, como te acomode.</p></div>
+          <div class="why-item reveal" style="--d:.2s;background:#fff"><div class="num">03</div><h3>Honorarios razonables</h3><p>Con facilidades de pago, y atención presencial u online según te acomode.</p></div>
         </div>
       </div>
     </section>
@@ -1274,6 +1346,11 @@ def main():
     write("404.html", build_404())
     # Redirección de la antigua página de ubicación al contacto
     write("ubicaciones/", redirect_page("../contacto/", SITE + "/contacto/"))
+    # URLs antiguas del WordPress que apuntan a servicios existentes
+    for old, new in [("policia-local-puerto-montt", "abogados-policia-local-puerto-montt"),
+                     ("abogado-de-escrituras-y-contratos-puerto-montt", "redaccion-de-escrituras"),
+                     ("asesoria-legal-inmobiliaria-puerto-montt", "asesoria-bienes-raices-puerto-montt")]:
+        write(f"portfolio-item/{old}/", redirect_page(f"../{new}/", f"{SITE}/portfolio-item/{new}/"))
 
     with open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8") as f:
         f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')

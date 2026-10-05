@@ -728,3 +728,10 @@ footer a:hover { color: var(--accent-2); }
 .side-list li a:hover { color: var(--accent); }
 .side-list time { display: block; font-weight: 500; color: var(--muted); font-size: .78rem; margin-bottom: .15rem; }
 .side-list .go { font-weight: 600; color: var(--navy-2); font-size: .9rem; }
+
+/* ===== Calificación de Google y red de sitios ===== */
+.trust .rating { display: inline-flex; align-items: center; gap: .4rem; color: #dbe3ec; }
+.trust .rating:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.trust .stars { color: #fbbc04; letter-spacing: 1px; }
+.trust .rating b { color: #fff; }
+footer .sites { gap: .35rem; font-size: .85rem; }
