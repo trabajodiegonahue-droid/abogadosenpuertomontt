@@ -259,6 +259,39 @@ SERVICES = [
 ]
 SERVICE_BY_SLUG = {s["slug"]: s for s in SERVICES}
 
+# SEO por servicio: título (<= 43 caracteres + " | Calixto & Cía."), meta descripción (<= 155),
+# y encabezados H2 con palabras clave.
+SEO = {
+    "abogados-de-familia-puerto-montt": ("Abogados de Familia en Puerto Montt",
+        "Abogados de familia en Puerto Montt: pensión de alimentos, divorcio, cuidado personal y VIF. Atención presencial u online. Agenda por WhatsApp.",
+        "¿Por qué contar con un abogado de familia?", "Casos de familia que atendemos", "derecho de familia"),
+    "abogados-penalistas-puerto-montt": ("Abogados Penalistas en Puerto Montt",
+        "Abogados penalistas en Puerto Montt: control de detención, formalización, juicio oral y querellas. Defensa urgente al +56 9 9797 9827.",
+        "¿Por qué contar con un abogado penalista?", "Casos penales que atendemos", "defensa penal"),
+    "abogados-civiles-puerto-montt": ("Abogados Civiles en Puerto Montt",
+        "Abogados civiles en Puerto Montt: juicios de tierras, precario, desalojos, arriendos, cobranzas e indemnizaciones. Agenda tu consulta por WhatsApp.",
+        "¿Por qué contar con un abogado civil?", "Juicios civiles que atendemos", "juicios civiles"),
+    "abogados-laborales-puerto-montt": ("Abogados Laborales en Puerto Montt",
+        "Abogados laborales en Puerto Montt: despido injustificado, nulidad del despido y accidentes del trabajo. Consulta antes de que venza el plazo.",
+        "¿Por qué contar con un abogado laboral?", "Casos laborales que atendemos", "derecho laboral"),
+    "posesion-efectiva-puerto-montt": ("Posesión Efectiva y Herencias Puerto Montt",
+        "Tramitación de posesión efectiva y partición de herencias en Puerto Montt. Te ayudamos a regularizar los bienes heredados. Agenda por WhatsApp.",
+        "¿Por qué tramitar tu herencia con un abogado?", "Trámites de herencia que realizamos", "posesión efectiva y herencias"),
+    "abogados-policia-local-puerto-montt": ("Abogados Policía Local Puerto Montt",
+        "Abogados de Policía Local en Puerto Montt: choques, accidentes de tránsito, infracciones y causas del consumidor. Cobra tus daños con nosotros.",
+        "¿Por qué ir con abogado al Juzgado de Policía Local?", "Causas de Policía Local que atendemos", "Policía Local"),
+    "sociedades-y-empresas-puerto-montt": ("Sociedades y Empresas en Puerto Montt",
+        "Constitución de sociedades y Empresa en un Día en Puerto Montt. Asesoría legal para pymes y empresas, con apoyo contable. Agenda tu consulta.",
+        "¿Por qué contar con un abogado para tu empresa?", "Servicios legales para empresas", "sociedades y empresas"),
+    "redaccion-de-escrituras": ("Escrituras y Contratos en Puerto Montt",
+        "Redacción de escrituras y contratos en Puerto Montt: compraventas, promesas, arriendos y poderes. También en Puerto Varas, Calbuco y Maullín.",
+        "¿Por qué redactar tus contratos con un abogado?", "Escrituras y contratos que redactamos", "escrituras y contratos"),
+    "abogados-online-puerto-montt": ("Abogados Online desde Puerto Montt",
+        "Abogados online: consulta legal por videollamada con un estudio de Puerto Montt. Familia, penal, civil, laboral y más, para clientes de todo Chile.",
+        "¿Cómo funciona la asesoría legal online?", "¿Qué incluye la asesoría online?", "asesoría online"),
+}
+SUFFIX = " | Calixto & Cía."
+
 TEAM = [
     ("FC", "Fernando Calixto Marín", "Abogado · Director"),
     ("EZ", "E. Zapata", "Abogado(a) asociado(a)"),
@@ -372,7 +405,7 @@ def quick_form(form_id, title, sub, selected=None, message=True):
               <textarea id="{form_id}-msg" name="mensaje" rows="3" placeholder="Cuéntanos brevemente tu caso"></textarea>
             </div>""" if message else ""
     return f"""<form class="card-form js-form" id="{form_id}" novalidate>
-            <h2>{title}</h2>
+            <p class="form-title">{title}</p>
             <p class="sub">{sub}</p>
             <div class="field">
               <label for="{form_id}-nombre">Nombre</label>
@@ -399,10 +432,21 @@ def faq_block(faqs, open_first=True):
     for i, (q, a) in enumerate(faqs):
         op = " open" if (i == 0 and open_first) else ""
         out.append(f"""          <details{op}>
-            <summary>{escape(q)}</summary>
+            <summary><h3>{escape(q)}</h3></summary>
             <p>{escape(a)}</p>
           </details>""")
     return "\n".join(out)
+
+
+def ld(obj):
+    import json
+    return f'\n  <script type="application/ld+json">{json.dumps(obj, ensure_ascii=False)}</script>'
+
+
+def breadcrumb_ld(crumbs):
+    """crumbs: lista de (nombre, ruta) desde la raíz."""
+    return ld({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": i + 1, "name": n, "item": SITE + "/" + path} for i, (n, path) in enumerate(crumbs)]})
 
 
 def faq_schema(faqs):
@@ -424,7 +468,7 @@ def service_card(s, p, delay=0, detailed=False):
             <h3>{escape(s['card'])}</h3>
             {body}
             <div class="actions">
-              <a class="go" href="{p}portfolio-item/{s['slug']}/">Ver más <svg><use href="#i-arrow"/></svg></a>
+              <a class="go" href="{p}portfolio-item/{s['slug']}/">Ver más<span class="sr-only"> sobre {escape(s['card'])}</span> <svg><use href="#i-arrow"/></svg></a>
               <a class="wa-mini js-wa" data-area="{escape(s['area'])}" data-track="tarjeta-servicio" href="#" aria-label="Consultar por WhatsApp sobre {escape(s['card'])}"><svg><use href="#i-wa"/></svg></a>
             </div>
           </article>"""
@@ -467,7 +511,7 @@ def page_hero(p, crumbs, title, lead, area=None, extra=""):
     </section>"""
 
 
-def layout(path, title, description, active, body, p, extra_head=""):
+def layout(path, title, description, active, body, p, extra_head="", noindex=False):
     sprite = open(os.path.join(ROOT, "build", "sprite.html")).read()
     sprite = sprite.replace("  </svg>\n", EXTRA_ICONS + "  </svg>\n", 1)
     canonical = SITE + "/" + path
@@ -493,18 +537,22 @@ def layout(path, title, description, active, body, p, extra_head=""):
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{escape(title)}</title>
   <meta name="description" content="{escape(description)}">
-  <link rel="canonical" href="{canonical}">
+  {'<meta name="robots" content="noindex, follow">' if noindex else f'<link rel="canonical" href="{canonical}">'}
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Abogados en Puerto Montt · Estudio Calixto &amp; Cía.">
   <meta property="og:title" content="{escape(title)}">
   <meta property="og:description" content="{escape(description)}">
   <meta property="og:url" content="{canonical}">
-  <meta property="og:image" content="{SITE}/assets/logo.png">
+  <meta property="og:image" content="{SITE}/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <meta property="og:locale" content="es_CL">
   <meta name="theme-color" content="#1b3263">
   <link rel="icon" href="{p}assets/logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:ital,wght@0,600;0,700;1,600&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{p}assets/css/styles.css">
   <script type="application/ld+json">
   {{
@@ -589,18 +637,18 @@ def layout(path, title, description, active, body, p, extra_head=""):
     <div class="container">
       <div class="foot">
         <div>
-          <div class="brand-footer"><img src="{p}assets/logo.png" alt="Calixto &amp; Cía. Abogados" width="207" height="56"></div>
+          <div class="brand-footer"><img src="{p}assets/logo-white.png" alt="Calixto &amp; Cía. Abogados" width="207" height="56"></div>
           <p>Estudio jurídico multidisciplinario. Asesoría y defensa judicial en Puerto Montt, Puerto Varas y la Provincia de Llanquihue.</p>
           <p><a href="{p}quienes-somos/">Quiénes somos</a> · <a href="{p}blog/">Blog</a> · <a href="{p}contacto/">Contacto</a></p>
         </div>
         <div>
-          <h4>Servicios</h4>
+          <p class="foot-title">Servicios</p>
           <ul>
 {footer_services}
           </ul>
         </div>
         <div>
-          <h4>Contacto</h4>
+          <p class="foot-title">Contacto</p>
           <ul>
             <li><a class="js-wa" data-track="footer" href="#">{PHONE}</a></li>
             <li><a class="js-call" data-track="footer" href="tel:{LANDLINE_TEL}">{LANDLINE}</a></li>
@@ -658,15 +706,16 @@ def build_home():
       <div class="container">
         <div class="hero-in">
           <div class="eyebrow" style="color:var(--accent-2)">Estudio jurídico · Puerto Montt</div>
-          <h1>Abogados en Puerto Montt para proteger
-            <span class="rotator" aria-live="polite">
+          <h1>Abogados en Puerto Montt</h1>
+          <p class="hero-sub">para proteger
+            <span class="rotator">
               <span class="on">a tu familia.</span>
-              <span>tu libertad.</span>
-              <span>tu patrimonio.</span>
-              <span>tu trabajo.</span>
-              <span>tu empresa.</span>
+              <span aria-hidden="true">tu libertad.</span>
+              <span aria-hidden="true">tu patrimonio.</span>
+              <span aria-hidden="true">tu trabajo.</span>
+              <span aria-hidden="true">tu empresa.</span>
             </span>
-          </h1>
+          </p>
           <p class="lead">Asesoría y defensa judicial en familia, penal, civil, laboral, herencias y empresas. Presencial en Puerto Montt y online para todo Chile.</p>
           <div class="hero-ctas">
             <a class="btn btn-wa js-wa" data-track="hero" href="#"><svg><use href="#i-wa"/></svg> Escríbenos por WhatsApp</a>
@@ -754,7 +803,7 @@ def build_home():
 
 {final_cta()}"""
     return layout("", "Abogados en Puerto Montt | Estudio Calixto & Cía.",
-                  f"Estudio jurídico en Puerto Montt. Abogados de familia, penal, civil, laboral, herencias, Policía Local, sociedades y contratos. Atención presencial y online. WhatsApp {PHONE}.",
+                  "Abogados en Puerto Montt: familia, penal, civil, laboral, herencias y empresas. Atención presencial u online. Agenda tu consulta por WhatsApp.",
                   "inicio", body, p)
 
 
@@ -774,6 +823,10 @@ def build_services():
 
     <section class="section">
       <div class="container">
+        <div class="section-head center reveal">
+          <div class="eyebrow">Áreas de práctica</div>
+          <h2>Nuestras áreas de práctica en Puerto Montt</h2>
+        </div>
         <div class="services cols-3">
 {services_grid(p, detailed=True)}
         </div>
@@ -793,9 +846,10 @@ def build_services():
     </section>
 
 {final_cta()}"""
-    return path, layout(path, "Servicios | Abogados en Puerto Montt - Estudio Calixto & Cía.",
+    return path, layout(path, "Servicios Legales en Puerto Montt" + SUFFIX,
                         "Abogados de familia, penal, civil, laboral, herencias, Policía Local, sociedades, contratos y asesoría online en Puerto Montt.",
-                        "servicios", body, p, f'\n  <script type="application/ld+json">{faq_schema(GENERAL_FAQS)}</script>')
+                        "servicios", body, p, f'\n  <script type="application/ld+json">{faq_schema(GENERAL_FAQS)}</script>'
+                        + breadcrumb_ld([("Inicio", ""), ("Servicios", path)]))
 
 
 CALL_MOCK = """<div class="call-mock reveal" aria-hidden="true" style="margin:1.6rem 0">
@@ -812,8 +866,9 @@ CALL_MOCK = """<div class="call-mock reveal" aria-hidden="true" style="margin:1.
 def build_service(s):
     path = f"portfolio-item/{s['slug']}/"
     p = rel(path)
+    seo_title, seo_desc, seo_why, seo_items, seo_topic = SEO[s["slug"]]
     items = "\n".join(
-        f'            <li><svg><use href="#i-check"/></svg><div><strong>{escape(t)}</strong><span>{escape(d)}</span></div></li>'
+        f'            <li><svg><use href="#i-check"/></svg><div><h3>{escape(t)}</h3><span>{escape(d)}</span></div></li>'
         for t, d in s["items"])
     idx = SERVICES.index(s)
     others = [SERVICES[(idx + k) % len(SERVICES)] for k in (1, 2, 3)]
@@ -826,10 +881,10 @@ def build_service(s):
     <section class="section">
       <div class="container detail">
         <article class="prose">
-          <h2 class="reveal">Te acompañamos en todo el proceso</h2>
+          <h2 class="reveal">{escape(seo_why)}</h2>
           <p class="reveal">{escape(s["intro"])}</p>
           {online_extra}
-          <h2 class="reveal">¿En qué te ayudamos?</h2>
+          <h2 class="reveal">{escape(seo_items)}</h2>
           <ul class="checklist reveal">
 {items}
           </ul>
@@ -840,7 +895,7 @@ def build_service(s):
             <li><div><strong>Estrategia clara.</strong> Te explicamos alternativas, plazos y costos antes de empezar.</div></li>
             <li><div><strong>Acción y seguimiento.</strong> Tramitamos tu caso y te informamos de cada avance.</div></li>
           </ol>
-          <h2 class="reveal">Preguntas frecuentes</h2>
+          <h2 class="reveal">Preguntas frecuentes sobre {escape(seo_topic)}</h2>
           <div class="faq reveal" style="margin:0">
 {faq_block(s["faqs"])}
           </div>
@@ -870,9 +925,14 @@ def build_service(s):
     </section>
 
 {final_cta()}"""
-    return path, layout(path, f"{s['title']} | Estudio Calixto & Cía.",
-                        f"{s['lead']} Agenda por WhatsApp: {PHONE}.",
-                        s["slug"], body, p, f'\n  <script type="application/ld+json">{faq_schema(s["faqs"])}</script>')
+    service_ld = ld({
+        "@context": "https://schema.org", "@type": "Service", "name": s["title"], "serviceType": s["card"],
+        "description": seo_desc, "url": SITE + "/" + path, "areaServed": {"@type": "City", "name": "Puerto Montt"},
+        "provider": {"@type": "LegalService", "name": "Abogados en Puerto Montt - Estudio Calixto & Cía.", "url": SITE + "/", "telephone": PHONE_TEL},
+    })
+    return path, layout(path, seo_title + SUFFIX, seo_desc, s["slug"], body, p,
+                        f'\n  <script type="application/ld+json">{faq_schema(s["faqs"])}</script>' + service_ld
+                        + breadcrumb_ld([("Inicio", ""), ("Servicios", "servicios/"), (s["card"], path)]))
 
 
 def build_about():
@@ -942,9 +1002,9 @@ def build_about():
     </section>
 
 {final_cta()}"""
-    return path, layout(path, "Quiénes somos | Abogados en Puerto Montt - Estudio Calixto & Cía.",
-                        "Conoce al Estudio Calixto & Cía.: abogados en Puerto Montt liderados por Fernando Calixto Marín, Magíster en Derecho Privado.",
-                        "nosotros", body, p)
+    return path, layout(path, "Quiénes Somos | Abogados en Puerto Montt" + SUFFIX,
+                        "Conoce al Estudio Calixto & Cía.: abogados en Puerto Montt liderados por Fernando Calixto Marín, Magíster en Derecho Privado (UACh).",
+                        "nosotros", body, p, breadcrumb_ld([("Inicio", ""), ("Quiénes somos", path)]))
 
 
 def build_blog():
@@ -963,6 +1023,10 @@ def build_blog():
 
     <section class="section">
       <div class="container">
+        <div class="section-head reveal">
+          <div class="eyebrow">Publicaciones</div>
+          <h2>Últimos artículos</h2>
+        </div>
         <div class="posts">
 {posts}
         </div>
@@ -970,9 +1034,9 @@ def build_blog():
     </section>
 
 {final_cta()}"""
-    return path, layout(path, "Blog jurídico | Abogados en Puerto Montt - Estudio Calixto & Cía.",
-                        "Artículos y noticias legales del Estudio Calixto & Cía.: derecho civil, familia y jurisprudencia.",
-                        "blog", body, p)
+    return path, layout(path, "Blog Jurídico | Abogados en Puerto Montt" + SUFFIX,
+                        "Artículos y noticias legales del Estudio Calixto & Cía. de Puerto Montt: derecho civil, familia, acción de precario y fallos de la Corte Suprema.",
+                        "blog", body, p, breadcrumb_ld([("Inicio", ""), ("Blog", path)]))
 
 
 def build_contact():
@@ -994,12 +1058,12 @@ def build_contact():
           </ul>
           <div class="map">
             <iframe title="Mapa: Torre del Puerto, Antonio Varas 216, Puerto Montt" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-              src="https://maps.google.com/maps?q=Antonio%20Varas%20216%2C%20Puerto%20Montt%2C%20Chile&z=16&output=embed"></iframe>
+              src="https://maps.google.com/maps?q=Antonio%20Varas%20216%2C%20Puerto%20Montt%2C%20Chile&amp;z=16&amp;output=embed"></iframe>
           </div>
         </div>
 
         <form class="card-form js-form reveal right" id="form-contacto" novalidate>
-          <h2>Solicita tu consulta</h2>
+          <p class="form-title">Solicita tu consulta</p>
           <p class="sub">Completa tus datos y elige cómo prefieres enviarlos.</p>
           <div class="field">
             <label for="c-nombre">Nombre completo</label>
@@ -1052,9 +1116,10 @@ def build_contact():
         </div>
       </div>
     </section>"""
-    return path, layout(path, "Contacto | Abogados en Puerto Montt - Estudio Calixto & Cía.",
+    return path, layout(path, "Contacto | Abogados en Puerto Montt" + SUFFIX,
                         f"Contacta al Estudio Calixto & Cía. en Torre del Puerto, Puerto Montt. WhatsApp {PHONE}, teléfono {LANDLINE}, {EMAIL}.",
-                        "contacto", body, p, f'\n  <script type="application/ld+json">{faq_schema(GENERAL_FAQS)}</script>')
+                        "contacto", body, p, f'\n  <script type="application/ld+json">{faq_schema(GENERAL_FAQS)}</script>'
+                        + breadcrumb_ld([("Inicio", ""), ("Contacto", path)]))
 
 
 def build_404():
@@ -1072,7 +1137,7 @@ def build_404():
       </div>
     </section>"""
     # Rutas absolutas: el 404 puede mostrarse en cualquier URL.
-    return layout("404.html", "Página no encontrada | Estudio Calixto & Cía.", "Página no encontrada.", "", body, p)
+    return layout("404.html", "Página no encontrada" + SUFFIX, "La página que buscas no existe o cambió de dirección.", "", body, p, noindex=True)
 
 
 def redirect_page(target_rel, target_abs):
