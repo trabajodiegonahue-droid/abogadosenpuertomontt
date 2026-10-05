@@ -13,8 +13,8 @@ sobre todo por WhatsApp y llamada. Por eso:
 - Incluye SEO local: datos estructurados `LegalService`, title y description, y Open Graph.
 
 ## Pendientes antes de publicar
-1. **Logo oficial**: reemplazar `assets/logo.svg` (provisional) por el logo real y ajustar el `src` en `index.html`.
-2. **Colores**: están definidos en `:root` al inicio del `<style>` (`--navy`, `--gold`). Hay que ajustarlos al logo oficial.
+1. **Logo**: ya integrado (`assets/logo.png`, colores de marca #1B3263 / #686868). Si el estudio tiene una versión en mayor resolución o en SVG, conviene reemplazarla para que se vea más nítida en pantallas retina. El favicon (`assets/logo.svg`) es una recreación simple del monograma CC.
+2. **Colores**: definidos en `:root` al inicio del `<style>`.
 3. **Foto del abogado**: opcional, en la sección "Quiénes somos" (`.about-visual`).
 4. **Etiqueta de Google Ads**: pegar el snippet `gtag` existente del sitio en el `<head>` y crear conversiones a partir de los eventos de arriba.
 5. Revisar los textos con el estudio, incluida la lista de comunas de cobertura.
