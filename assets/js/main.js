@@ -233,5 +233,13 @@
     setTimeout(function () { waFloat.classList.remove("peek"); }, 5000);
   }, 6000);
 
+  // Rendimiento: pausa las animaciones de las secciones que no se ven en pantalla
+  if ("IntersectionObserver" in window) {
+    var animIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { en.target.classList.toggle("anim-off", !en.isIntersecting); });
+    });
+    $$(".hero, .page-hero, .final-cta, .marquee, .call-mock, .alert-bar").forEach(function (el) { animIo.observe(el); });
+  }
+
   $$(".js-year").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 })();
