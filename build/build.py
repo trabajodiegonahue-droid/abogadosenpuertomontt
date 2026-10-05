@@ -298,24 +298,88 @@ TEAM = [
     ("RC", "Roberto Calisto Villegas", "Contador auditor"),
 ]
 
+# Artículos del blog. Se publican en las MISMAS URLs del WordPress actual para no perder
+# posicionamiento. El texto es un borrador basado en la ley chilena: conviene reemplazarlo
+# o revisarlo con el texto original de cada artículo antes de publicar.
 POSTS = [
     {
-        "url": SITE + "/2025/11/08/la-accion-de-precario-en-chile/",
-        "date": "2025-11-08", "date_txt": "8 de noviembre de 2025", "cat": "Derecho Civil", "icon": "i-home",
-        "title": "La acción de precario en Chile",
-        "text": "Nadie puede ocupar un inmueble ajeno sin un título que lo justifique. Te explicamos cómo recuperar tu propiedad.",
+        "path": "2025/11/08/la-accion-de-precario-en-chile/",
+        "date": "2025-11-08", "date_txt": "8 de noviembre de 2025", "cat": "Artículos de Ayuda", "icon": "i-home",
+        "title": "La Acción de Precario en Chile",
+        "text": "Una herramienta del derecho civil para recuperar un inmueble ocupado por alguien sin contrato ni título que lo justifique.",
+        "related": "abogados-civiles-puerto-montt",
+        "body": """
+          <p class="lead">La acción de precario es una institución de gran relevancia dentro del derecho civil chileno, destinada a proteger el derecho de dominio frente a la ocupación ilegítima de un bien. En la práctica, esta figura permite al propietario recuperar la tenencia de una cosa que se encuentra en manos de otra persona sin que exista título alguno que justifique dicha ocupación.</p>
+          <h2>¿Qué es el precario?</h2>
+          <p>El artículo 2195 inciso segundo del Código Civil señala que <em>“constituye también precario la tenencia de una cosa ajena, sin previo contrato y por ignorancia o mera tolerancia del dueño”</em>. Es decir, hay precario cuando una persona ocupa un bien que no le pertenece, sin un contrato u otro título que lo autorice, y solo porque el dueño no lo sabía o lo ha permitido por simple tolerancia.</p>
+          <h2>Requisitos de la acción</h2>
+          <p>Para que la demanda de precario prospere, los tribunales exigen acreditar tres elementos:</p>
+          <ul>
+            <li><strong>Que el demandante es dueño</strong> de la cosa, normalmente con la inscripción de dominio vigente en el Conservador de Bienes Raíces.</li>
+            <li><strong>Que el demandado ocupa</strong> el bien.</li>
+            <li><strong>Que esa ocupación no tiene título</strong>: no existe contrato ni otra razón jurídica que la justifique, y se debe a la ignorancia o mera tolerancia del dueño.</li>
+          </ul>
+          <p>Si el ocupante logra demostrar que tiene un título (por ejemplo, un contrato de arriendo o comodato vigente), la acción de precario no es la vía adecuada y deberán usarse otras acciones.</p>
+          <h2>¿Cómo se tramita?</h2>
+          <p>La acción de precario se tramita conforme al procedimiento sumario, ante el juzgado civil competente. Es un procedimiento más breve que el juicio ordinario, lo que la convierte en una herramienta eficaz para recuperar la propiedad.</p>
+          <h2>Casos frecuentes</h2>
+          <ul>
+            <li>Familiares o conocidos a quienes se les permitió vivir “mientras tanto” y luego se niegan a salir.</li>
+            <li>Ex parejas que permanecen en una vivienda que no les pertenece.</li>
+            <li>Ocupación de terrenos o parcelas sin autorización del dueño.</li>
+          </ul>
+          <h2>¿Qué hacer si tienes este problema?</h2>
+          <p>Reúne los antecedentes de tu dominio (inscripción en el Conservador, certificado de dominio vigente) y cualquier información sobre la ocupación. Con eso podemos evaluar si procede la acción de precario o si conviene otra vía, como la acción reivindicatoria o el término de un arriendo.</p>
+""",
     },
     {
-        "url": SITE + "/2025/08/19/abogados-de-familia-en-puerto-montt-y-region-de-los-lagos/",
+        "path": "2025/08/19/abogados-de-familia-en-puerto-montt-y-region-de-los-lagos/",
         "date": "2025-08-19", "date_txt": "19 de agosto de 2025", "cat": "Familia", "icon": "i-family",
         "title": "Abogados de Familia en Puerto Montt y Región de Los Lagos",
         "text": "Alimentos, divorcio, cuidado personal y medidas de protección: cómo te acompañamos ante los Tribunales de Familia.",
+        "related": "abogados-de-familia-puerto-montt",
+        "body": """
+          <p class="lead">Los conflictos familiares son de los más sensibles que una persona puede enfrentar. Contar con un abogado de familia en Puerto Montt te permite conocer tus derechos, buscar acuerdos y, cuando es necesario, defender tus intereses y los de tus hijos ante el Tribunal de Familia.</p>
+          <h2>Materias que atendemos</h2>
+          <ul>
+            <li><strong>Pensión de alimentos:</strong> demandas, aumentos, rebajas, cese y cobro de pensiones adeudadas.</li>
+            <li><strong>Divorcio:</strong> de mutuo acuerdo, unilateral o por culpa, y la compensación económica asociada.</li>
+            <li><strong>Cuidado personal</strong> de los hijos y <strong>relación directa y regular</strong> (régimen de visitas).</li>
+            <li><strong>Violencia intrafamiliar</strong> y medidas de protección urgentes.</li>
+          </ul>
+          <h2>La mediación previa</h2>
+          <p>En materias de alimentos, cuidado personal y relación directa y regular, la ley exige por regla general pasar por una mediación familiar antes de presentar la demanda. Es una oportunidad para llegar a un acuerdo; si no se logra, se obtiene el certificado que permite demandar. Te acompañamos también en esta etapa.</p>
+          <h2>Divorcio: plazos de cese de convivencia</h2>
+          <p>Para el divorcio de mutuo acuerdo se exige, por regla general, al menos un año de cese de la convivencia, y para el divorcio unilateral, al menos tres años. El divorcio por culpa no exige un plazo de separación, pero requiere acreditar una falta grave a los deberes del matrimonio.</p>
+          <h2>Deudas de pensión de alimentos</h2>
+          <p>Cuando no se pagan las pensiones, existen herramientas para su cobro, como la liquidación de la deuda, la retención de fondos y la inscripción del deudor en el Registro Nacional de Deudores de Pensiones de Alimentos, que trae consecuencias como restricciones para realizar ciertos trámites.</p>
+          <h2>Atención en Puerto Montt y la Región de Los Lagos</h2>
+          <p>Atendemos en nuestra oficina de Torre del Puerto, en el centro de Puerto Montt, y también por videollamada para clientes de Puerto Varas, Calbuco, Los Muermos, Maullín y el resto de la región.</p>
+""",
     },
     {
-        "url": SITE + "/2025/02/10/corte-suprema-confirma-fallo-que-ordeno-a-beneficiada-restituir-vivienda-serviu/",
+        "path": "2025/02/10/corte-suprema-confirma-fallo-que-ordeno-a-beneficiada-restituir-vivienda-serviu/",
         "date": "2025-02-10", "date_txt": "10 de febrero de 2025", "cat": "Jurisprudencia", "icon": "i-news",
-        "title": "Corte Suprema confirma fallo que ordenó restituir vivienda SERVIU",
-        "text": "El máximo tribunal declaró inadmisible la casación y confirmó la acción reivindicatoria sobre la vivienda.",
+        "title": "Corte Suprema confirma fallo que ordenó a beneficiada restituir vivienda SERVIU",
+        "seo_title": "Corte Suprema: restitución de vivienda SERVIU",
+        "text": "El máximo tribunal declaró inadmisible la casación y dejó firme la acción reivindicatoria sobre la vivienda.",
+        "related": "abogados-civiles-puerto-montt",
+        "body": """
+          <p class="lead">La Primera Sala de la Corte Suprema, de forma unánime, declaró inadmisible el recurso de casación interpuesto contra la sentencia que acogió una demanda reivindicatoria y ordenó restituir una vivienda asignada por SERVIU (causa rol N° 61.345-2024).</p>
+          <h2>¿Qué decidió la Corte?</h2>
+          <p>Al declarar inadmisible el recurso, la Corte Suprema no entró a revisar el fondo del asunto, por lo que quedó firme la sentencia que había ordenado la restitución del inmueble.</p>
+          <h2>¿Qué es la acción reivindicatoria?</h2>
+          <p>Según el artículo 889 del Código Civil, la reivindicación o acción de dominio es la que tiene el dueño de una cosa singular, de que no está en posesión, para que el poseedor sea condenado a restituírsela. Para que prospere se debe acreditar:</p>
+          <ul>
+            <li>Que el demandante es dueño de la cosa.</li>
+            <li>Que el demandado está en posesión de ella.</li>
+            <li>Que se trata de una cosa singular, debidamente individualizada.</li>
+          </ul>
+          <h2>¿Por qué es relevante?</h2>
+          <p>El fallo confirma que las viviendas sociales también están protegidas por las acciones del derecho civil: quien la ocupa sin derecho puede ser obligado a restituirla a su dueño, aunque haya sido beneficiado anteriormente por un programa habitacional.</p>
+          <h2>¿Tienes un caso similar?</h2>
+          <p>Si alguien ocupa tu propiedad o te demandaron para restituir un inmueble, es importante revisar los títulos y la situación de posesión. Te ayudamos a definir si corresponde una acción reivindicatoria, de precario u otra vía.</p>
+""",
     },
 ]
 
@@ -992,11 +1056,13 @@ def build_about():
         <div class="section-head center reveal" style="margin-bottom:0">
           <div class="eyebrow">Cobertura</div>
           <h2>Atendemos en toda la Provincia de Llanquihue</h2>
-          <p class="lead">Y a clientes de todo el país mediante asesoría online.</p>
-          <div class="areas">
-            <span class="hl">Puerto Montt</span><span>Puerto Varas</span><span>Llanquihue</span><span>Frutillar</span>
-            <span>Los Muermos</span><span>Calbuco</span><span>Maullín</span><span>Fresia</span><span class="hl">Online · todo Chile</span>
-          </div>
+          <p class="lead">Representamos causas en los tribunales de estas comunas. Si vives en otra parte de Chile, te atendemos por videollamada.</p>
+          <ul class="areas">
+            <li class="main"><svg><use href="#i-pin"/></svg> Puerto Montt <small>Oficina</small></li>
+            <li><svg><use href="#i-pin"/></svg> Puerto Varas</li><li><svg><use href="#i-pin"/></svg> Llanquihue</li><li><svg><use href="#i-pin"/></svg> Frutillar</li>
+            <li><svg><use href="#i-pin"/></svg> Los Muermos</li><li><svg><use href="#i-pin"/></svg> Calbuco</li><li><svg><use href="#i-pin"/></svg> Maullín</li><li><svg><use href="#i-pin"/></svg> Fresia</li>
+          </ul>
+          <p style="margin-top:1.4rem"><a class="btn btn-navy" href="{p}portfolio-item/abogados-online-puerto-montt/"><svg><use href="#i-video"/></svg> ¿Estás en otra ciudad? Consulta online</a></p>
         </div>
       </div>
     </section>
@@ -1010,7 +1076,7 @@ def build_about():
 def build_blog():
     path = "blog/"
     p = rel(path)
-    posts = "\n".join(f"""          <a class="post reveal" style="--d:{i * 0.1:.1f}s" href="{x['url']}">
+    posts = "\n".join(f"""          <a class="post reveal" style="--d:{i * 0.1:.1f}s" href="{p}{x['path']}">
             <div class="cover"><span class="cat">{escape(x['cat'])}</span><svg><use href="#{x['icon']}"/></svg></div>
             <div class="body">
               <time datetime="{x['date']}">{x['date_txt']}</time>
@@ -1037,6 +1103,51 @@ def build_blog():
     return path, layout(path, "Blog Jurídico | Abogados en Puerto Montt" + SUFFIX,
                         "Artículos y noticias legales del Estudio Calixto & Cía. de Puerto Montt: derecho civil, familia, acción de precario y fallos de la Corte Suprema.",
                         "blog", body, p, breadcrumb_ld([("Inicio", ""), ("Blog", path)]))
+
+
+def build_post(x):
+    path = x["path"]
+    p = rel(path)
+    svc = SERVICE_BY_SLUG[x["related"]]
+    others = "\n".join(
+        f'            <li><a href="{p}{o["path"]}"><time datetime="{o["date"]}">{o["date_txt"]}</time>{escape(o["title"])}</a></li>'
+        for o in POSTS if o is not x)
+    body = f"""{page_hero(p, [("Blog", p + "blog/"), (x["title"], None)], escape(x["title"]), f'<time datetime="{x["date"]}">{x["date_txt"]}</time> · {escape(x["cat"])} · Estudio Calixto &amp; Cía.', area=svc["area"])}
+
+    <section class="section">
+      <div class="container detail">
+        <article class="prose article">
+          <div class="post-cover reveal"><svg><use href="#{x['icon']}"/></svg><span class="cat">{escape(x['cat'])}</span></div>
+{x["body"]}
+          <div class="callout reveal"><svg><use href="#i-info"/></svg><p>Este artículo es informativo y no reemplaza una asesoría legal. Cada caso es distinto: escríbenos y revisamos el tuyo.</p></div>
+          <p><a class="btn btn-navy" href="{p}portfolio-item/{svc['slug']}/">Ver servicio de {escape(svc['card'])} <svg><use href="#i-arrow"/></svg></a></p>
+        </article>
+
+        <aside class="sidebar">
+          {quick_form("form-articulo", "¿Tienes un caso similar?", "Cuéntanos y te respondemos por WhatsApp.", selected=svc["area"], message=False)}
+          <div class="side-list">
+            <p class="form-title">Otras publicaciones</p>
+            <ul>
+{others}
+            </ul>
+            <a class="go" href="{p}blog/">Ver todo el blog →</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+{final_cta()}"""
+    article_ld = ld({
+        "@context": "https://schema.org", "@type": "BlogPosting", "headline": x["title"], "datePublished": x["date"],
+        "description": x["text"], "url": SITE + "/" + path, "image": SITE + "/assets/og-image.png",
+        "author": {"@type": "Organization", "name": "Estudio Calixto & Cía."},
+        "publisher": {"@type": "Organization", "name": "Estudio Calixto & Cía.", "logo": {"@type": "ImageObject", "url": SITE + "/assets/logo.png"}},
+    })
+    title = x.get("seo_title", x["title"])
+    if len(title + SUFFIX) <= 62:
+        title += SUFFIX
+    return path, layout(path, title, x["text"], "blog", body, p,
+                        article_ld + breadcrumb_ld([("Inicio", ""), ("Blog", "blog/"), (x["title"], path)]))
 
 
 def build_contact():
@@ -1158,6 +1269,8 @@ def main():
         path, html = builder(); write(path, html); pages.append(path)
     for s in SERVICES:
         path, html = build_service(s); write(path, html); pages.append(path)
+    for x in POSTS:
+        path, html = build_post(x); write(path, html); pages.append(path)
     write("404.html", build_404())
     # Redirección de la antigua página de ubicación al contacto
     write("ubicaciones/", redirect_page("../contacto/", SITE + "/contacto/"))

@@ -12,6 +12,7 @@ Es un sitio estático de varias páginas, sin dependencias:
 | `/portfolio-item/<servicio>/` | Una página por servicio, con formulario lateral y FAQ |
 | `/quienes-somos/` | Estudio, credenciales, equipo y cobertura |
 | `/blog/` | Artículos del blog |
+| `/AAAA/MM/DD/<artículo>/` | Cada artículo, en la misma URL que tiene hoy en WordPress |
 | `/contacto/` | Datos, mapa y formulario completo |
 | `/ubicaciones/` | Redirige a `/contacto/` (URL del sitio antiguo) |
 | `/404.html` | Página no encontrada |
@@ -61,6 +62,7 @@ sobre todo por WhatsApp y llamada. Por eso:
 4. **Etiqueta de Google Ads**: pegar el snippet `gtag` existente del sitio en el `<head>` y crear conversiones a partir de los eventos de arriba.
 5. Revisar los textos con el estudio, incluida la lista de comunas de cobertura.
 6. **Equipo**: confirmar nombres y cargos de E. Zapata y Roberto Calisto Villegas. Los obtuve de resultados de búsqueda, no del sitio.
-7. **Blog**: las tarjetas enlazan a los artículos que ya existen en el sitio actual (WordPress). Si se reemplaza el WordPress, hay que migrar esos artículos o mantenerlos en sus mismas URLs.
+7. **Blog**: los 3 artículos ya son páginas del sitio nuevo, en sus mismas URLs. Su texto es un **borrador**: solo el primer párrafo del de precario es original; el resto se redactó a partir de la ley chilena. Hay que reemplazarlo por el texto original o revisarlo con el abogado. El blog actual tiene artículos más recientes que también hay que migrar (título, fecha, URL y texto), por ejemplo: "Juzgado de letras de Buin declara la nulidad absoluta de contratos de compraventa de inmueble", "Corte Suprema resuelve que negar prueba confesional en segunda instancia vulnera el derecho de defensa", "Corte Suprema resuelve que acción reivindicatoria procede contra mero tenedor", "Corte Suprema resuelve que acción de precario procede aunque la demanda no identifique con exactitud la parte ocupada" y "Proyecto de ley busca tipificar como delito el ingreso clandestino al territorio nacional".
+10. **Redes sociales**: el sitio actual enlaza a Facebook, Instagram, LinkedIn, X, YouTube y Vimeo. Solo se conoce la URL de Facebook; hay que agregar las demás en `build/build.py`.
 8. **SEO**: las URLs de servicios ya coinciden con las actuales. Las páginas de laboral (`abogados-laborales-puerto-montt`) y herencias (`posesion-efectiva-puerto-montt`) son nuevas. Revisa en Google Search Console si existen otras URLs antiguas que haya que redirigir.
 9. **Hosting**: el sitio funciona en cualquier hosting estático (Netlify, Vercel, GitHub Pages o el hosting actual). Hay que configurar `404.html` como página de error.
