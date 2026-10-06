@@ -187,24 +187,26 @@
     });
   });
 
-  // Paisaje del hero: leve paralaje con el mouse (solo escritorio)
-  var scene = $(".landscape");
-  if (scene && !reduceMotion && window.matchMedia("(pointer: fine)").matches) {
-    var layers = $$("[data-depth]", scene);
-    var host = scene.parentElement;
-    var raf = null, tx = 0, ty = 0;
-    host.addEventListener("pointermove", function (e) {
-      var r = host.getBoundingClientRect();
-      tx = (e.clientX - r.left) / r.width - 0.5;
-      ty = (e.clientY - r.top) / r.height - 0.5;
-      if (!raf) raf = requestAnimationFrame(function () {
-        layers.forEach(function (l) {
-          var d = parseFloat(l.getAttribute("data-depth"));
-          l.style.translate = (-tx * d) + "px " + (-ty * d * 0.4) + "px";
-        });
-        raf = null;
+  // Cifras que cuentan hacia arriba al aparecer
+  var counters = $$(".count[data-to]");
+  if (counters.length && "IntersectionObserver" in window && !reduceMotion) {
+    var cio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        cio.unobserve(en.target);
+        var el = en.target, raw = el.getAttribute("data-to"), dec = raw.indexOf(",") > -1 ? 1 : 0;
+        var to = parseFloat(raw.replace(",", ".")), prefix = el.textContent.trim().charAt(0) === "+" ? "+" : "";
+        var t0 = null;
+        function step(ts) {
+          if (!t0) t0 = ts;
+          var k = Math.min(1, (ts - t0) / 1400), v = to * (1 - Math.pow(1 - k, 3));
+          el.textContent = prefix + v.toFixed(dec).replace(".", ",");
+          if (k < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
       });
-    });
+    }, { threshold: 0.5 });
+    counters.forEach(function (el) { cio.observe(el); });
   }
 
   // Header compacto, barra de progreso, botón "arriba" y barra móvil
@@ -238,7 +240,7 @@
     var animIo = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { en.target.classList.toggle("anim-off", !en.isIntersecting); });
     });
-    $$(".hero, .page-hero, .final-cta, .marquee, .call-mock, .alert-bar").forEach(function (el) { animIo.observe(el); });
+    $$(".hero, .page-hero, .final-cta, .quote-band, .marquee, .call-mock, .alert-bar").forEach(function (el) { animIo.observe(el); });
   }
 
   $$(".js-year").forEach(function (el) { el.textContent = new Date().getFullYear(); });

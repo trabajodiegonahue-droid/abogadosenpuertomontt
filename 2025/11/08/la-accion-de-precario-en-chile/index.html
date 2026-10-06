@@ -70,6 +70,7 @@
     <symbol id="i-fb" viewBox="0 0 24 24"><path fill="currentColor" d="M14 8h3V4h-3c-2.8 0-4.5 1.8-4.5 4.6V11H7v4h2.5v9h4v-9h3l.5-4h-3.5V9c0-.6.4-1 1-1z"/></symbol>
     <symbol id="i-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></g></symbol>
     <symbol id="i-menu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></g></symbol>
     <symbol id="i-rings" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="14" r="6"/><circle cx="15" cy="10" r="6"/></g></symbol>
     <symbol id="i-key" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 9.8-9.8M17 6l3 3M14.5 8.5l2 2"/></g></symbol>
     <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
@@ -134,6 +135,7 @@
         <a class="link" href="../../../../quienes-somos/">Quiénes somos</a>
         <a class="link active" href="../../../../blog/" aria-current="page">Blog</a>
         <a class="link" href="../../../../contacto/">Contacto</a>
+        <a class="nav-phone js-call" data-track="header" href="tel:+56997979827"><svg><use href="#i-phone"/></svg> +56 9 9797 9827</a>
         <a class="btn btn-wa js-wa" data-track="header" href="#"><svg><use href="#i-wa"/></svg> Agendar consulta</a>
       </nav>
     </div>
@@ -141,40 +143,10 @@
 
   <main>
     <section class="page-hero">
-      <div class="grid-bg"></div>
-      <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
-      <div class="aurora" aria-hidden="true"><i></i><i></i></div>
-      <div class="moon" aria-hidden="true"></div>
-      <span class="shoot" aria-hidden="true"></span><span class="shoot s2" aria-hidden="true"></span><span class="shoot s3" aria-hidden="true"></span>
-      <div class="particles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-      <div class="landscape" aria-hidden="true">
-        <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
-        <svg class="layer far" data-depth="8" viewBox="0 0 1440 220" preserveAspectRatio="xMidYMax slice">
-          <path fill="rgba(169,191,230,.12)" d="M0 190 L70 166 L150 176 L240 146 L330 164 L420 142 L520 168 L610 146 L700 158 L800 136 L900 160 L1000 144 L1100 168 L1200 146 L1300 166 L1380 152 L1440 162 V220 H0Z"/>
-        </svg>
-        <svg class="layer volcanoes" data-depth="18" viewBox="0 0 1440 220" preserveAspectRatio="xMidYMax slice">
-          <defs>
-            <linearGradient id="gOsorno" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c4d4f2" stop-opacity=".42"/><stop offset="1" stop-color="#7d9ad6" stop-opacity=".14"/></linearGradient>
-            <linearGradient id="gCalbuco" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b3c6ec" stop-opacity=".32"/><stop offset="1" stop-color="#7d9ad6" stop-opacity=".1"/></linearGradient>
-          </defs>
-          <path fill="url(#gOsorno)" d="M430 210 C520 188 600 120 668 56 Q704 28 740 56 C808 120 888 188 978 210 Z"/>
-          <path class="snow" fill="rgba(255,255,255,.75)" d="M668 56 Q704 28 740 56 L754 70 L736 80 L721 70 L706 86 L691 70 L675 81 L654 70 Z"/>
-          <path fill="url(#gCalbuco)" d="M980 212 L1060 160 L1096 130 L1112 138 L1128 122 L1148 136 L1166 132 L1214 166 L1310 212 Z"/>
-          <path fill="rgba(255,255,255,.4)" d="M1096 130 L1112 138 L1128 122 L1148 136 L1166 132 L1177 141 L1157 148 L1140 141 L1120 152 L1104 145 L1087 150 Z"/>
-          <ellipse class="smoke" cx="1128" cy="110" rx="16" ry="9" fill="rgba(255,255,255,.35)"/>
-          <ellipse class="smoke" cx="1134" cy="104" rx="12" ry="7" fill="rgba(255,255,255,.3)" style="animation-delay:-4.5s"/>
-        </svg>
-        <svg class="layer near" data-depth="30" viewBox="0 0 1440 220" preserveAspectRatio="xMidYMax slice">
-          <path fill="rgba(15,30,61,.6)" d="M0 214 C120 194 220 198 330 205 C460 212 560 190 700 199 C840 208 960 192 1100 203 C1240 212 1340 196 1440 203 V220 H0Z"/>
-        </svg>
-        <div class="boat"><svg viewBox="0 0 48 32" fill="currentColor"><path d="M23 2v20H9zM25 6l12 16H25z"/><path d="M4 24h40l-5 6H9z"/></svg></div>
-        <div class="boat b2"><svg viewBox="0 0 48 32" fill="currentColor"><path d="M23 2v20H9zM25 6l12 16H25z"/><path d="M4 24h40l-5 6H9z"/></svg></div>
-        <div class="waves">
-          <svg class="w1" viewBox="0 0 2880 80" preserveAspectRatio="none"><path fill="rgba(169,191,230,.12)" d="M0 30 Q90 16 180 30 Q270 44 360 30 Q450 16 540 30 Q630 44 720 30 Q810 16 900 30 Q990 44 1080 30 Q1170 16 1260 30 Q1350 44 1440 30 Q1530 16 1620 30 Q1710 44 1800 30 Q1890 16 1980 30 Q2070 44 2160 30 Q2250 16 2340 30 Q2430 44 2520 30 Q2610 16 2700 30 Q2790 44 2880 30 V80 H0 Z"/></svg>
-          <svg class="w2" viewBox="0 0 2880 80" preserveAspectRatio="none"><path fill="rgba(255,255,255,.08)" d="M0 40 Q120 30 240 40 Q360 50 480 40 Q600 30 720 40 Q840 50 960 40 Q1080 30 1200 40 Q1320 50 1440 40 Q1560 30 1680 40 Q1800 50 1920 40 Q2040 30 2160 40 Q2280 50 2400 40 Q2520 30 2640 40 Q2760 50 2880 40 V80 H0 Z"/></svg>
-          <svg class="w3" viewBox="0 0 2880 80" preserveAspectRatio="none"><path fill="#ffffff" d="M0 52 Q60 45 120 52 Q180 59 240 52 Q300 45 360 52 Q420 59 480 52 Q540 45 600 52 Q660 59 720 52 Q780 45 840 52 Q900 59 960 52 Q1020 45 1080 52 Q1140 59 1200 52 Q1260 45 1320 52 Q1380 59 1440 52 Q1500 45 1560 52 Q1620 59 1680 52 Q1740 45 1800 52 Q1860 59 1920 52 Q1980 45 2040 52 Q2100 59 2160 52 Q2220 45 2280 52 Q2340 59 2400 52 Q2460 45 2520 52 Q2580 59 2640 52 Q2700 45 2760 52 Q2820 59 2880 52 V80 H0 Z"/></svg>
-        </div>
-        <div class="glints"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-glow"></div>
+        <svg class="courthouse" viewBox="0 0 640 420" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path class="draw" d="M30 122 320 18 610 122Z"/><path class="draw" d="M78 112 320 34 562 112Z"/><path d="M302 88h36M320 70v30M306 76l-8 14h16zM334 76l-8 14h16z"/><rect x="30" y="122" width="580" height="14"/><rect x="40" y="136" width="560" height="14"/><rect x="68" y="150" width="54" height="10"/><rect x="73" y="160" width="44" height="6"/><path d="M78 166V356M112 166V356M86.5 170V352M95 170V352M103.5 170V352"/><rect x="72" y="356" width="46" height="8"/><rect x="68" y="364" width="54" height="6"/><rect x="158" y="150" width="54" height="10"/><rect x="163" y="160" width="44" height="6"/><path d="M168 166V356M202 166V356M176.5 170V352M185 170V352M193.5 170V352"/><rect x="162" y="356" width="46" height="8"/><rect x="158" y="364" width="54" height="6"/><rect x="248" y="150" width="54" height="10"/><rect x="253" y="160" width="44" height="6"/><path d="M258 166V356M292 166V356M266.5 170V352M275 170V352M283.5 170V352"/><rect x="252" y="356" width="46" height="8"/><rect x="248" y="364" width="54" height="6"/><rect x="338" y="150" width="54" height="10"/><rect x="343" y="160" width="44" height="6"/><path d="M348 166V356M382 166V356M356.5 170V352M365 170V352M373.5 170V352"/><rect x="342" y="356" width="46" height="8"/><rect x="338" y="364" width="54" height="6"/><rect x="428" y="150" width="54" height="10"/><rect x="433" y="160" width="44" height="6"/><path d="M438 166V356M472 166V356M446.5 170V352M455 170V352M463.5 170V352"/><rect x="432" y="356" width="46" height="8"/><rect x="428" y="364" width="54" height="6"/><rect x="518" y="150" width="54" height="10"/><rect x="523" y="160" width="44" height="6"/><path d="M528 166V356M562 166V356M536.5 170V352M545 170V352M553.5 170V352"/><rect x="522" y="356" width="46" height="8"/><rect x="518" y="364" width="54" height="6"/><rect x="18" y="370" width="604" height="14"/><rect x="6" y="384" width="628" height="14"/><rect x="0" y="398" width="640" height="14"/></svg>
+        <div class="hero-vignette"></div>
       </div>
 
       <div class="container hero-in">
@@ -254,7 +226,7 @@
     </section>
 
     <section class="final-cta">
-      <div class="orb o1"></div><div class="orb o2"></div>
+      <div class="hero-bg" aria-hidden="true"><div class="hero-glow"></div><svg class="courthouse" viewBox="0 0 640 420" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path class="draw" d="M30 122 320 18 610 122Z"/><path class="draw" d="M78 112 320 34 562 112Z"/><path d="M302 88h36M320 70v30M306 76l-8 14h16zM334 76l-8 14h16z"/><rect x="30" y="122" width="580" height="14"/><rect x="40" y="136" width="560" height="14"/><rect x="68" y="150" width="54" height="10"/><rect x="73" y="160" width="44" height="6"/><path d="M78 166V356M112 166V356M86.5 170V352M95 170V352M103.5 170V352"/><rect x="72" y="356" width="46" height="8"/><rect x="68" y="364" width="54" height="6"/><rect x="158" y="150" width="54" height="10"/><rect x="163" y="160" width="44" height="6"/><path d="M168 166V356M202 166V356M176.5 170V352M185 170V352M193.5 170V352"/><rect x="162" y="356" width="46" height="8"/><rect x="158" y="364" width="54" height="6"/><rect x="248" y="150" width="54" height="10"/><rect x="253" y="160" width="44" height="6"/><path d="M258 166V356M292 166V356M266.5 170V352M275 170V352M283.5 170V352"/><rect x="252" y="356" width="46" height="8"/><rect x="248" y="364" width="54" height="6"/><rect x="338" y="150" width="54" height="10"/><rect x="343" y="160" width="44" height="6"/><path d="M348 166V356M382 166V356M356.5 170V352M365 170V352M373.5 170V352"/><rect x="342" y="356" width="46" height="8"/><rect x="338" y="364" width="54" height="6"/><rect x="428" y="150" width="54" height="10"/><rect x="433" y="160" width="44" height="6"/><path d="M438 166V356M472 166V356M446.5 170V352M455 170V352M463.5 170V352"/><rect x="432" y="356" width="46" height="8"/><rect x="428" y="364" width="54" height="6"/><rect x="518" y="150" width="54" height="10"/><rect x="523" y="160" width="44" height="6"/><path d="M528 166V356M562 166V356M536.5 170V352M545 170V352M553.5 170V352"/><rect x="522" y="356" width="46" height="8"/><rect x="518" y="364" width="54" height="6"/><rect x="18" y="370" width="604" height="14"/><rect x="6" y="384" width="628" height="14"/><rect x="0" y="398" width="640" height="14"/></svg></div>
       <div class="container reveal zoom">
         <h2>¿Necesitas un abogado en Puerto Montt?</h2>
         <p>No dejes pasar los plazos legales. Escríbenos hoy y agenda tu consulta presencial u online.</p>

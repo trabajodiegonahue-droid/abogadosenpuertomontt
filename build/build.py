@@ -457,7 +457,8 @@ GENERAL_FAQS = [
 # ---------------------------------------------------------------------------
 # Piezas comunes
 # ---------------------------------------------------------------------------
-EXTRA_ICONS = """    <symbol id="i-rings" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="14" r="6"/><circle cx="15" cy="10" r="6"/></g></symbol>
+EXTRA_ICONS = """    <symbol id="i-chat" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></g></symbol>
+    <symbol id="i-rings" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="14" r="6"/><circle cx="15" cy="10" r="6"/></g></symbol>
     <symbol id="i-key" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 9.8-9.8M17 6l3 3M14.5 8.5l2 2"/></g></symbol>
     <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
     <symbol id="i-chev" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></symbol>
@@ -465,56 +466,29 @@ EXTRA_ICONS = """    <symbol id="i-rings" viewBox="0 0 24 24"><g fill="none" str
 """
 
 
-def wave(amp, period, base, h=80, width=2880):
-    d = f"M0 {base}"
-    x, up = 0, True
-    while x < width:
-        cx, x2 = x + period / 4, x + period / 2
-        cy = base - amp if up else base + amp
-        d += f" Q{cx:g} {cy:g} {x2:g} {base}"
-        x, up = x2, not up
-    return d + f" V{h} H0 Z"
+def courthouse_svg():
+    """Fachada neoclásica de tribunal en línea fina (decorativa)."""
+    cols = []
+    for cx in (95, 185, 275, 365, 455, 545):
+        cols.append(
+            f'<rect x="{cx-27}" y="150" width="54" height="10"/><rect x="{cx-22}" y="160" width="44" height="6"/>'
+            f'<path d="M{cx-17} 166V356M{cx+17} 166V356M{cx-8.5} 170V352M{cx} 170V352M{cx+8.5} 170V352"/>'
+            f'<rect x="{cx-23}" y="356" width="46" height="8"/><rect x="{cx-27}" y="364" width="54" height="6"/>')
+    return ('<svg class="courthouse" viewBox="0 0 640 420" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">'
+            '<path class="draw" d="M30 122 320 18 610 122Z"/><path class="draw" d="M78 112 320 34 562 112Z"/>'
+            '<path d="M302 88h36M320 70v30M306 76l-8 14h16zM334 76l-8 14h16z"/>'
+            '<rect x="30" y="122" width="580" height="14"/><rect x="40" y="136" width="560" height="14"/>'
+            + "".join(cols) +
+            '<rect x="18" y="370" width="604" height="14"/><rect x="6" y="384" width="628" height="14"/><rect x="0" y="398" width="640" height="14"/>'
+            '</svg>')
 
 
-W1, W2, W3 = wave(14, 360, 30), wave(10, 480, 40), wave(7, 240, 52)
-
-
-def scene(sea_color):
-    """Fondo animado: cielo, aurora, luna, estrellas fugaces, volcanes y mar."""
-    return f"""      <div class="grid-bg"></div>
-      <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
-      <div class="aurora" aria-hidden="true"><i></i><i></i></div>
-      <div class="moon" aria-hidden="true"></div>
-      <span class="shoot" aria-hidden="true"></span><span class="shoot s2" aria-hidden="true"></span><span class="shoot s3" aria-hidden="true"></span>
-      <div class="particles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-      <div class="landscape" aria-hidden="true">
-        <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
-        <svg class="layer far" data-depth="8" viewBox="0 0 1440 220" preserveAspectRatio="xMidYMax slice">
-          <path fill="rgba(169,191,230,.12)" d="M0 190 L70 166 L150 176 L240 146 L330 164 L420 142 L520 168 L610 146 L700 158 L800 136 L900 160 L1000 144 L1100 168 L1200 146 L1300 166 L1380 152 L1440 162 V220 H0Z"/>
-        </svg>
-        <svg class="layer volcanoes" data-depth="18" viewBox="0 0 1440 220" preserveAspectRatio="xMidYMax slice">
-          <defs>
-            <linearGradient id="gOsorno" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c4d4f2" stop-opacity=".42"/><stop offset="1" stop-color="#7d9ad6" stop-opacity=".14"/></linearGradient>
-            <linearGradient id="gCalbuco" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b3c6ec" stop-opacity=".32"/><stop offset="1" stop-color="#7d9ad6" stop-opacity=".1"/></linearGradient>
-          </defs>
-          <path fill="url(#gOsorno)" d="M430 210 C520 188 600 120 668 56 Q704 28 740 56 C808 120 888 188 978 210 Z"/>
-          <path class="snow" fill="rgba(255,255,255,.75)" d="M668 56 Q704 28 740 56 L754 70 L736 80 L721 70 L706 86 L691 70 L675 81 L654 70 Z"/>
-          <path fill="url(#gCalbuco)" d="M980 212 L1060 160 L1096 130 L1112 138 L1128 122 L1148 136 L1166 132 L1214 166 L1310 212 Z"/>
-          <path fill="rgba(255,255,255,.4)" d="M1096 130 L1112 138 L1128 122 L1148 136 L1166 132 L1177 141 L1157 148 L1140 141 L1120 152 L1104 145 L1087 150 Z"/>
-          <ellipse class="smoke" cx="1128" cy="110" rx="16" ry="9" fill="rgba(255,255,255,.35)"/>
-          <ellipse class="smoke" cx="1134" cy="104" rx="12" ry="7" fill="rgba(255,255,255,.3)" style="animation-delay:-4.5s"/>
-        </svg>
-        <svg class="layer near" data-depth="30" viewBox="0 0 1440 220" preserveAspectRatio="xMidYMax slice">
-          <path fill="rgba(15,30,61,.6)" d="M0 214 C120 194 220 198 330 205 C460 212 560 190 700 199 C840 208 960 192 1100 203 C1240 212 1340 196 1440 203 V220 H0Z"/>
-        </svg>
-        <div class="boat"><svg viewBox="0 0 48 32" fill="currentColor"><path d="M23 2v20H9zM25 6l12 16H25z"/><path d="M4 24h40l-5 6H9z"/></svg></div>
-        <div class="boat b2"><svg viewBox="0 0 48 32" fill="currentColor"><path d="M23 2v20H9zM25 6l12 16H25z"/><path d="M4 24h40l-5 6H9z"/></svg></div>
-        <div class="waves">
-          <svg class="w1" viewBox="0 0 2880 80" preserveAspectRatio="none"><path fill="rgba(169,191,230,.12)" d="{W1}"/></svg>
-          <svg class="w2" viewBox="0 0 2880 80" preserveAspectRatio="none"><path fill="rgba(255,255,255,.08)" d="{W2}"/></svg>
-          <svg class="w3" viewBox="0 0 2880 80" preserveAspectRatio="none"><path fill="{sea_color}" d="{W3}"/></svg>
-        </div>
-        <div class="glints"><i></i><i></i><i></i><i></i><i></i></div>
+def scene(kind="page"):
+    """Fondo del hero: degradado sobrio con la fachada de tribunal en dorado tenue."""
+    return f"""      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-glow"></div>
+        {courthouse_svg()}
+        <div class="hero-vignette"></div>
       </div>
 """
 
@@ -587,14 +561,14 @@ def faq_schema(faqs):
     }, ensure_ascii=False)
 
 
-def service_card(s, p, delay=0, detailed=False):
+def service_card(s, p, delay=0, detailed=False, num=None):
     if detailed:
         body = "<ul>" + "".join(f"<li>{escape(t)}</li>" for t, _ in s["items"][:5]) + "</ul>"
     else:
         body = f"<p>{escape(s['short'])}</p>"
     d = f' style="--d:{delay:.2f}s"' if delay else ""
     return f"""          <article class="service reveal"{d}>
-            <div class="ic"><svg><use href="#{s['icon']}"/></svg></div>
+            <div class="card-top"><div class="ic"><svg><use href="#{s['icon']}"/></svg></div>{f'<span class="num">{num:02d}</span>' if num else ''}</div>
             <h3>{escape(s['card'])}</h3>
             {body}
             <div class="actions">
@@ -605,12 +579,19 @@ def service_card(s, p, delay=0, detailed=False):
 
 
 def services_grid(p, detailed=False):
-    return "\n".join(service_card(s, p, (i % 4) * 0.08, detailed) for i, s in enumerate(SERVICES))
+    cards = [service_card(s, p, (i % 3) * 0.08, detailed, i + 1) for i, s in enumerate(SERVICES)]
+    # Tarjeta de cierre: completa la grilla y ofrece contacto directo
+    cards.append(f"""          <article class="service service-cta reveal">
+            <h3>¿No encuentras tu materia?</h3>
+            <p>Cuéntanos tu caso: te orientamos y, si no es nuestra área, te decimos a quién acudir.</p>
+            <div class="actions"><a class="btn btn-wa js-wa" data-track="tarjeta-otra" href="#"><svg><use href="#i-wa"/></svg> Consultar por WhatsApp</a></div>
+          </article>""")
+    return "\n".join(cards)
 
 
 def final_cta():
     return """    <section class="final-cta">
-      <div class="orb o1"></div><div class="orb o2"></div>
+      <div class="hero-bg" aria-hidden="true"><div class="hero-glow"></div>""" + courthouse_svg() + """</div>
       <div class="container reveal zoom">
         <h2>¿Necesitas un abogado en Puerto Montt?</h2>
         <p>No dejes pasar los plazos legales. Escríbenos hoy y agenda tu consulta presencial u online.</p>
@@ -622,13 +603,130 @@ def final_cta():
     </section>"""
 
 
+TRIBUNALS = ["Corte Suprema", "Corte de Apelaciones de Puerto Montt", "Juzgados de Letras en lo Civil", "Juzgado de Familia",
+             "Juzgado de Garantía", "Tribunal de Juicio Oral en lo Penal", "Juzgado de Letras del Trabajo", "Juzgados de Policía Local"]
+
+
+def stats_band():
+    items = [("+", YEARS, "", "Años de experiencia"), ("", RATING, "★", "Calificación en Google"),
+             ("", REVIEWS, "", "Reseñas de clientes"), ("", str(len(SERVICES)), "", "Áreas de práctica")]
+    cells = "\n".join(
+        f'          <div class="stat reveal" style="--d:{i * .1:.1f}s"><span class="stat-n"><span class="count" data-to="{n}">{pre}{n}</span>{suf}</span><span class="stat-l">{l}</span></div>'
+        for i, (pre, n, suf, l) in enumerate(items))
+    return f"""    <section class="stats" aria-label="El estudio en cifras">
+      <div class="container">
+{cells}
+      </div>
+    </section>"""
+
+
+def tribunals_band():
+    names = "".join(f"<span>{escape(t)}</span>" for t in TRIBUNALS)
+    return f"""    <section class="tribunals" aria-label="Tribunales">
+      <p class="tribunals-title">Representamos a nuestros clientes ante</p>
+      <div class="marquee"><div class="marquee-track">{names}{names}</div></div>
+    </section>"""
+
+
+def attorney_block(p, full=False):
+    creds = [
+        "Licenciado en Ciencias Jurídicas y Magíster en Derecho Privado (UACh).",
+        "Diplomados en Derecho Procesal Avanzado y Litigación Oral (UC).",
+        "Diplomados en Derecho Privado, Derecho Penal Sustantivo y Litigación Oral (USS).",
+        "Miembro del Colegio de Abogados de Puerto Montt.",
+    ]
+    creds_html = "".join(f'<li><svg><use href="#i-check"/></svg> {escape(c)}</li>' for c in (creds if full else creds[:2] + creds[3:]))
+    cta = "" if full else f'<a class="btn btn-navy" href="{p}quienes-somos/">Conoce al equipo <svg><use href="#i-arrow"/></svg></a>'
+    return f"""    <section class="section attorney">
+      <div class="container attorney-grid">
+        <figure class="portrait reveal left">
+          <!-- Reemplazar por la foto profesional del abogado: <img src="..." alt="Fernando Calixto Marín"> -->
+          <div class="frame"><span class="mono">FC</span></div>
+          <figcaption><strong>Fernando Calixto Marín</strong><span>Abogado · Director del estudio</span></figcaption>
+        </figure>
+        <div class="reveal right">
+          <div class="eyebrow">{'Nuestro estudio' if full else 'El abogado'}</div>
+          <h2>{'Experiencia, preparación y cercanía' if full else 'Fernando Calixto Marín'}</h2>
+          <p class="lead">Con más de {YEARS} años de ejercicio, se ha dedicado a la asesoría legal y defensa judicial de personas, familias, negocios y empresas de Puerto Montt y la Región de Los Lagos.</p>
+          <ul class="creds">{creds_html}</ul>
+          <blockquote class="pull">Nuestro compromiso es que cada cliente entienda su situación, conozca sus alternativas y se sienta acompañado en todo el proceso.</blockquote>
+          {cta}
+        </div>
+      </div>
+    </section>"""
+
+
+def values_block():
+    vals = [("i-scale", "Ética profesional", "Actuamos con honestidad y te decimos con claridad qué se puede lograr y qué no."),
+            ("i-lock", "Confidencialidad", "Tu caso está protegido por el secreto profesional desde la primera consulta."),
+            ("i-shield", "Compromiso", "Defendemos tus intereses en todas las instancias, con seguimiento permanente."),
+            ("i-chat", "Cercanía", "Trato directo con tu abogado y respuestas en lenguaje simple.")]
+    cards = "\n".join(
+        f'          <div class="value reveal" style="--d:{i * .1:.1f}s"><svg><use href="#{ic}"/></svg><h3>{t}</h3><p>{d}</p></div>'
+        for i, (ic, t, d) in enumerate(vals))
+    return f"""    <section class="section values-sec">
+      <div class="container">
+        <div class="section-head center reveal">
+          <div class="eyebrow">Nuestros valores</div>
+          <h2>Lo que nos define como estudio</h2>
+        </div>
+        <div class="values">
+{cards}
+        </div>
+      </div>
+    </section>"""
+
+
+def reviews_block():
+    return f"""    <section class="section reviews">
+      <div class="container reviews-grid">
+        <div class="reveal left">
+          <div class="eyebrow">Opiniones de clientes</div>
+          <h2>La confianza de quienes ya nos eligieron</h2>
+          <p class="lead">Nuestros clientes nos califican con {RATING} estrellas en Google. Su recomendación es nuestro mejor respaldo.</p>
+          <div class="hero-ctas" style="margin-bottom:0">
+            <a class="btn btn-navy" href="{GOOGLE_REVIEWS}" target="_blank" rel="noopener">Ver reseñas en Google <svg><use href="#i-arrow"/></svg></a>
+          </div>
+        </div>
+        <div class="rating-card reveal right">
+          <span class="big">{RATING}</span>
+          <span class="stars" aria-label="{RATING} de 5 estrellas">★★★★★</span>
+          <span class="count-line"><strong>{REVIEWS}</strong> reseñas en Google</span>
+          <span class="seal">Clientes de Puerto Montt y la Región de Los Lagos</span>
+        </div>
+      </div>
+    </section>"""
+
+
+def quote_band():
+    return f"""    <section class="quote-band">
+      <div class="hero-bg" aria-hidden="true"><div class="hero-glow"></div>{courthouse_svg()}</div>
+      <div class="container reveal zoom">
+        <blockquote>«La justicia es la constante y perpetua voluntad de dar a cada uno su derecho.»</blockquote>
+        <cite>Ulpiano · Digesto</cite>
+      </div>
+    </section>"""
+
+
+def post_cards(p):
+    return "\n".join(f"""          <a class="post reveal" style="--d:{i * 0.1:.1f}s" href="{p}{x['path']}">
+            <div class="cover"><span class="cat">{escape(x['cat'])}</span><svg><use href="#{x['icon']}"/></svg></div>
+            <div class="body">
+              <time datetime="{x['date']}">{x['date_txt']}</time>
+              <h3>{escape(x['title'])}</h3>
+              <p>{escape(x['text'])}</p>
+              <span class="read">Leer artículo <svg width="16" height="16"><use href="#i-arrow"/></svg></span>
+            </div>
+          </a>""" for i, x in enumerate(POSTS))
+
+
 def page_hero(p, crumbs, title, lead, area=None, extra=""):
     items = [f'<li><a href="{p}">Inicio</a></li>']
     for label, href in crumbs:
         items.append(f'<li><a href="{href}">{escape(label)}</a></li>' if href else f'<li aria-current="page">{escape(label)}</li>')
     data_area = f' data-area="{escape(area)}"' if area else ""
     return f"""    <section class="page-hero">
-{scene('#ffffff')}
+{scene("page")}
       <div class="container hero-in">
         <ol class="crumbs">{''.join(items)}</ol>
         <h1>{title}</h1>
@@ -755,6 +853,7 @@ def layout(path, title, description, active, body, p, extra_head="", noindex=Fal
         {nav_link('nosotros', p + 'quienes-somos/', 'Quiénes somos')}
         {nav_link('blog', p + 'blog/', 'Blog')}
         {nav_link('contacto', p + 'contacto/', 'Contacto')}
+        <a class="nav-phone js-call" data-track="header" href="tel:{PHONE_TEL}"><svg><use href="#i-phone"/></svg> {PHONE}</a>
         <a class="btn btn-wa js-wa" data-track="header" href="#"><svg><use href="#i-wa"/></svg> Agendar consulta</a>
       </nav>
     </div>
@@ -837,61 +936,39 @@ def rel(path):
 def build_home():
     p = ""
     body = f"""    <section class="hero">
-{scene('#0f1e3d')}
+{scene("home")}
       <div class="container">
         <div class="hero-in">
-          <div class="eyebrow" style="color:var(--accent-2)">Estudio jurídico · Puerto Montt</div>
+          <div class="eyebrow">Estudio Jurídico Calixto &amp; Cía.</div>
           <h1>Abogados en Puerto Montt</h1>
-          <p class="hero-sub">para proteger
-            <span class="rotator">
-              <span class="on">a tu familia.</span>
-              <span aria-hidden="true">tu libertad.</span>
-              <span aria-hidden="true">tu patrimonio.</span>
-              <span aria-hidden="true">tu trabajo.</span>
-              <span aria-hidden="true">tu empresa.</span>
-            </span>
-          </p>
-          <p class="lead">Asesoría y defensa judicial en familia, penal, civil, laboral, herencias y empresas. Presencial en Puerto Montt y online para todo Chile.</p>
+          <p class="hero-sub">Defensa legal seria, cercana y confidencial.</p>
+          <p class="lead">Asesoría y representación judicial en familia, penal, civil, laboral, herencias y empresas. Atención presencial en Torre del Puerto y online para todo Chile.</p>
           <div class="hero-ctas">
-            <a class="btn btn-wa js-wa" data-track="hero" href="#"><svg><use href="#i-wa"/></svg> Escríbenos por WhatsApp</a>
+            <a class="btn btn-wa js-wa" data-track="hero" href="#"><svg><use href="#i-wa"/></svg> Agendar por WhatsApp</a>
             <a class="btn btn-ghost js-call" data-track="hero" href="tel:{PHONE_TEL}"><svg><use href="#i-phone"/></svg> {PHONE}</a>
           </div>
           <ul class="trust">
             <li><a class="rating" href="{GOOGLE_REVIEWS}" target="_blank" rel="noopener"><span class="stars" aria-hidden="true">★★★★★</span> <b>{RATING}</b> en Google · {REVIEWS} reseñas</a></li>
-            <li><svg><use href="#i-check"/></svg> +{YEARS} años de experiencia</li>
-            <li><svg><use href="#i-check"/></svg> Facilidades de pago</li>
+            <li><svg><use href="#i-award"/></svg> Colegio de Abogados de Puerto Montt</li>
           </ul>
         </div>
 
         <div class="form-wrap">
-          <div class="float-badge fb-1"><span class="dot"><svg><use href="#i-wa"/></svg></span><span>Respuesta por WhatsApp<small>en horario hábil</small></span></div>
-          <div class="float-badge fb-2"><span class="dot"><svg><use href="#i-video"/></svg></span><span>Consulta online<small>por videollamada</small></span></div>
-          {quick_form("form-hero", "Agenda tu consulta", "Déjanos tus datos y te contactamos.", message=False)}
+          {quick_form("form-hero", "Solicite su consulta", "Déjenos sus datos y lo contactamos en horario hábil.", message=False)}
         </div>
       </div>
     </section>
 
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee-track">
-        {''.join(f'<span>{escape(s["card"])}</span>' for s in SERVICES) * 2}
-      </div>
-    </div>
-
-    <section class="strip" aria-label="Por qué elegirnos">
-      <div class="container">
-        <div class="strip-item reveal"><div class="ic"><svg><use href="#i-star"/></svg></div><div><strong>{RATING} ★ en Google</strong><span>{REVIEWS} reseñas de clientes</span></div></div>
-        <div class="strip-item reveal" style="--d:.1s"><div class="ic"><svg><use href="#i-award"/></svg></div><div><strong>+{YEARS} años de experiencia</strong><span>Magíster en Derecho (UACh)</span></div></div>
-        <div class="strip-item reveal" style="--d:.2s"><div class="ic"><svg><use href="#i-brief"/></svg></div><div><strong>Honorarios razonables</strong><span>Con facilidades de pago</span></div></div>
-        <div class="strip-item reveal" style="--d:.3s"><div class="ic"><svg><use href="#i-video"/></svg></div><div><strong>Presencial u online</strong><span>Torre del Puerto o videollamada</span></div></div>
-      </div>
-    </section>
+{stats_band()}
 
     <section class="section" id="servicios">
       <div class="container">
-        <div class="section-head center reveal">
-          <div class="eyebrow">Áreas de práctica</div>
-          <h2>¿En qué te podemos ayudar?</h2>
-          <p class="lead">Elige tu materia para ver el detalle o escríbenos directo por WhatsApp.</p>
+        <div class="section-head split reveal">
+          <div>
+            <div class="eyebrow">Áreas de práctica</div>
+            <h2>Asesoría y defensa en las materias que más importan</h2>
+          </div>
+          <p class="lead">Representamos a personas, familias y empresas en todas las etapas del proceso, desde la primera consulta hasta la sentencia.</p>
         </div>
         <div class="services cols-3 compact">
 {services_grid(p)}
@@ -899,39 +976,41 @@ def build_home():
       </div>
     </section>
 
+{attorney_block(p)}
+
+{tribunals_band()}
+
+{values_block()}
+
     <section class="section process" id="como-trabajamos">
       <div class="container">
         <div class="section-head center reveal">
           <div class="eyebrow">Cómo trabajamos</div>
-          <h2>Agendar tu consulta es simple</h2>
+          <h2>Tres pasos para comenzar</h2>
         </div>
         <div class="steps">
-          <div class="step reveal"><div class="n">1</div><h3>Escríbenos</h3><p>Por WhatsApp, teléfono o formulario, con un breve resumen de tu situación.</p></div>
-          <div class="step reveal" style="--d:.15s"><div class="n">2</div><h3>Coordinamos la reunión</h3><p>Presencial en Torre del Puerto o por videollamada, como te acomode.</p></div>
-          <div class="step reveal" style="--d:.3s"><div class="n">3</div><h3>Plan de acción</h3><p>Te explicamos alternativas, plazos y costos, y comenzamos a trabajar.</p></div>
+          <div class="step reveal"><div class="n">I</div><h3>Primera consulta</h3><p>Escríbanos por WhatsApp, teléfono o formulario con un breve resumen de su situación.</p></div>
+          <div class="step reveal" style="--d:.15s"><div class="n">II</div><h3>Análisis del caso</h3><p>Nos reunimos en Torre del Puerto o por videollamada y revisamos sus antecedentes.</p></div>
+          <div class="step reveal" style="--d:.3s"><div class="n">III</div><h3>Estrategia y acción</h3><p>Le explicamos alternativas, plazos y honorarios, con facilidades de pago, y comenzamos a trabajar.</p></div>
         </div>
       </div>
     </section>
 
-    <section class="section home-about">
-      <div class="container about">
-        <div class="about-visual reveal left">
-          {SCALES}
-          <div class="badge">
-            <strong>Fernando Calixto Marín</strong>
-            <span>Abogado · Fundador del estudio</span>
+{reviews_block()}
+
+{quote_band()}
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head split reveal">
+          <div>
+            <div class="eyebrow">Actualidad legal</div>
+            <h2>Publicaciones recientes</h2>
           </div>
+          <p><a class="btn btn-outline" href="{p}blog/">Ver todas las publicaciones <svg><use href="#i-arrow"/></svg></a></p>
         </div>
-        <div class="reveal right">
-          <div class="eyebrow">Quiénes somos</div>
-          <h2>Experiencia legal al servicio de Puerto Montt</h2>
-          <p class="lead">Un equipo de abogados especializados en distintas áreas del derecho, con servicios serios, personalizados y confidenciales.</p>
-          <ul class="creds">
-            <li><svg><use href="#i-check"/></svg> Magíster en Derecho Privado (UACh) y diplomados UC y USS.</li>
-            <li><svg><use href="#i-check"/></svg> Miembro del Colegio de Abogados de Puerto Montt.</li>
-            <li><svg><use href="#i-check"/></svg> Apoyo contable para empresas y pymes.</li>
-          </ul>
-          <a class="btn btn-navy" href="{p}quienes-somos/">Conoce al equipo <svg><use href="#i-arrow"/></svg></a>
+        <div class="posts">
+{post_cards(p)}
         </div>
       </div>
     </section>
@@ -1078,29 +1157,14 @@ def build_about():
         for i, (a, n, r) in enumerate(TEAM))
     body = f"""{page_hero(p, [("Quiénes somos", None)], "Quiénes somos", "Un equipo de abogados especializados en distintas áreas del derecho, al servicio de Puerto Montt y la Región de Los Lagos.")}
 
-    <section class="section">
+{attorney_block(p, full=True)}
+
+    <section class="section" style="padding-top:0">
       <div class="container">
-        <div class="about">
-          <div class="about-visual reveal left">
-            {SCALES}
-            <div class="badge">
-              <strong>Fernando Calixto Marín</strong>
-              <span>Abogado · Fundador del estudio</span>
-            </div>
-          </div>
-          <div class="reveal right">
-            <div class="eyebrow">Nuestro estudio</div>
-            <h2>Servicios legales serios, personalizados y confidenciales</h2>
-            <p class="lead">Con más de {YEARS} años de experiencia, prestamos servicios y asesorías legales permanentes y ocasionales en Puerto Montt, Puerto Varas y toda la Provincia de Llanquihue.</p>
-            <p>Mantenemos una tarifa de honorarios razonable y otorgamos facilidades de pago, aprovechando la tramitación electrónica y los procedimientos orales para reducir costos sin bajar la calidad.</p>
-            <p>El estudio fue fundado por <strong>Fernando Calixto Marín</strong>, abogado dedicado a la asesoría legal y defensa judicial de personas, familias, negocios y empresas de Puerto Montt y la X Región.</p>
-            <ul class="creds">
-              <li><svg><use href="#i-check"/></svg> Licenciado en Ciencias Jurídicas y Magíster en Derecho Privado (UACh).</li>
-              <li><svg><use href="#i-check"/></svg> Diplomados en Derecho Procesal Avanzado y Litigación Oral (UC).</li>
-              <li><svg><use href="#i-check"/></svg> Diplomados en Derecho Privado, Derecho Penal Sustantivo y Litigación Oral (USS).</li>
-              <li><svg><use href="#i-check"/></svg> Miembro del Colegio de Abogados de Puerto Montt.</li>
-            </ul>
-          </div>
+        <div class="section-head reveal">
+          <div class="eyebrow">Equipo</div>
+          <h2>Profesionales que lo acompañan</h2>
+          <p class="lead">Mantenemos honorarios razonables y otorgamos facilidades de pago, aprovechando la tramitación electrónica para reducir costos sin bajar la calidad.</p>
         </div>
         <!-- Equipo (confirmar nombres y cargos con el estudio) -->
         <div class="team">
@@ -1109,19 +1173,9 @@ def build_about():
       </div>
     </section>
 
-    <section class="section process">
-      <div class="container">
-        <div class="section-head reveal">
-          <div class="eyebrow">Por qué Calixto &amp; Cía.</div>
-          <h2>Cercanía, respaldo académico y experiencia en tribunales</h2>
-        </div>
-        <div class="why-grid">
-          <div class="why-item reveal" style="background:#fff"><div class="num">01</div><h3>Trato directo con tu abogado</h3><p>Hablas con quien lleva tu caso. Te explicamos cada etapa en lenguaje simple.</p></div>
-          <div class="why-item reveal" style="--d:.1s;background:#fff"><div class="num">02</div><h3>Equipo multidisciplinario</h3><p>Abogados y apoyo contable para abordar tu caso de forma integral.</p></div>
-          <div class="why-item reveal" style="--d:.2s;background:#fff"><div class="num">03</div><h3>Honorarios razonables</h3><p>Con facilidades de pago, y atención presencial u online según te acomode.</p></div>
-        </div>
-      </div>
-    </section>
+{values_block()}
+
+{reviews_block()}
 
     <section class="section" style="padding-block:72px">
       <div class="container">
@@ -1148,15 +1202,7 @@ def build_about():
 def build_blog():
     path = "blog/"
     p = rel(path)
-    posts = "\n".join(f"""          <a class="post reveal" style="--d:{i * 0.1:.1f}s" href="{p}{x['path']}">
-            <div class="cover"><span class="cat">{escape(x['cat'])}</span><svg><use href="#{x['icon']}"/></svg></div>
-            <div class="body">
-              <time datetime="{x['date']}">{x['date_txt']}</time>
-              <h3>{escape(x['title'])}</h3>
-              <p>{escape(x['text'])}</p>
-              <span class="read">Leer artículo <svg width="16" height="16"><use href="#i-arrow"/></svg></span>
-            </div>
-          </a>""" for i, x in enumerate(POSTS))
+    posts = post_cards(p)
     body = f"""{page_hero(p, [("Blog", None)], "Blog jurídico", "Información clara sobre tus derechos y fallos relevantes de los tribunales chilenos.")}
 
     <section class="section">

@@ -58,7 +58,9 @@ sobre todo por WhatsApp y llamada. Por eso:
 ## Pendientes antes de publicar
 1. **Logo**: ya integrado (`assets/logo.png`, colores de marca #1B3263 / #686868). Si el estudio tiene una versión en mayor resolución o en SVG, conviene reemplazarla para que se vea más nítida en pantallas retina. El favicon (`assets/logo.svg`) es una recreación simple del monograma CC.
 2. **Colores**: definidos en `:root` al inicio del `<style>`.
-3. **Fotos**: no se pudieron descargar las imágenes del sitio actual (la red del entorno bloquea el dominio). Si el estudio las entrega (foto del abogado, oficina, equipo), se agregan en `assets/img/` y se integran en "Quiénes somos" y en el hero.
+3. **Foto del abogado**: el retrato de "El abogado" muestra el monograma "FC" mientras no haya foto. Reemplazar el `<div class="frame">` en `attorney_block()` de `build/build.py` por un `<img>` con la foto profesional (vertical 4:5).
+3b. **Testimonios**: no se incluyeron citas de clientes para no inventarlas. Si el estudio autoriza 3 reseñas reales de Google, se pueden agregar al bloque de opiniones.
+3c. **Fotos**: no se pudieron descargar las imágenes del sitio actual (la red del entorno bloquea el dominio). Si el estudio las entrega (foto del abogado, oficina, equipo), se agregan en `assets/img/` y se integran en "Quiénes somos" y en el hero.
 4. **Etiqueta de Google Ads**: pegar el snippet `gtag` existente del sitio en el `<head>` y crear conversiones a partir de los eventos de arriba.
 5. Revisar los textos con el estudio, incluida la lista de comunas de cobertura.
 6. **Datos de confianza**: 4,9 ★ con 433 reseñas en Google, +15 años de experiencia y facilidades de pago se tomaron del sitio y la ficha de Google actuales; hay que confirmarlos y actualizar las reseñas (`RATING`, `REVIEWS` y `YEARS` en `build/build.py`).
